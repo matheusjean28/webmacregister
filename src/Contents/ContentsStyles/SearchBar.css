@@ -1,0 +1,39 @@
+.SearchBarConteiner {
+  display: flex;
+  padding: 15px 0;
+  gap: 15px;
+}
+
+#Categ {
+  padding: 5px;
+  border-radius: 8px;
+  border: none;
+}
+
+#SearchBarTextInput {
+  padding: 0 10px;
+  border-radius: 8px;
+  border: none;
+}
+#SearchBarTextInput:hover{
+  transition: ease-in-out .3s;
+
+    background-color: rgb(252, 254, 255);
+  }
+  
+#SubmitSearchButton {
+  border: 1px solid gray;
+  transition: ease-in-out .3s;
+  border-radius: 8px;
+  padding: 0 10px;
+}
+
+ 
+#SubmitSearchButton:hover {
+    background-color: whitesmoke;
+    color: darkgray;
+    font-weight: bolder;
+    border: 1px solid black;
+    transition: ease-in-out .1s;
+    transform: translateY(2px);
+}
