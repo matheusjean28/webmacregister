@@ -1,0 +1,12 @@
+.headersConteinerStyles{
+    display:  flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.userPic {
+    height: 40px;
+    border: 1px solid whitesmoke;
+    border-radius: 100%;
+}
