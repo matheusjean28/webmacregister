@@ -1,0 +1,19 @@
+.MacListConteiner {
+  display: flex;
+  margin: auto;
+  height: 490px;
+  background-color: red;
+  width: 100%;
+
+  padding: 0;
+}
+
+.MacListLi {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  justify-content: center;
+  height: 30px;
+  align-items: center;
+  background-color: rebeccapurple;
+}
