@@ -1,19 +1,36 @@
 .MacListConteiner {
   display: flex;
+  flex-direction: column;
   margin: auto;
   height: 490px;
-  background-color: red;
   width: 100%;
 
-  padding: 0;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background: #005dae transparent;
+  box-shadow: inset 5px 5px 10px #002546,
+              inset -5px -5px 18px #0095ff;
+              
+              overflow-y: scroll;
+              scroll-behavior: smooth;
+}
+.MacListConteiner::-webkit-scrollbar {
+  display: none;
 }
 
 .MacListLi {
   display: flex;
   gap: 15px;
   width: 100%;
-  justify-content: center;
-  height: 30px;
+  height: 30px; 
+
+  justify-content:space-evenly;
   align-items: center;
-  background-color: rebeccapurple;
+
+  font-size: 11px;
+  font-weight: bold;
+
+  margin-top: 15px;
+  border-bottom: 1px solid rgb(97, 97, 97) ;
+
 }
