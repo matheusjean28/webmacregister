@@ -1,19 +1,86 @@
 .UserLoginConteiner {
-    display:  flex;
-    height: 700px;
-    margin: 5px;
-    background-color: rgb(0, 0, 0);
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  height: 700px;
+  margin: 5px;
+  background-color: rgb(0, 0, 0);
+  align-items: center;
+  justify-content: center;
 
-
-    
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   max-width: 1380px;
   width: 1380px;
-
   max-height: 800px;
+}
+
+.LogginUser {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+
+  background-color: #a9a9a97f;
+  padding: 85px 50px;
+  border-radius: 19px;
+  background: #212121;
+  box-shadow: inset -9px -9px 28px #0d0d0d, inset 9px 9px 28px #353535;
+}
+
+.LogginUser input,
+button {
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  background-color: #f0f0f0;
+  color: #212121;
+  font-weight: bolder;
+}
+
+.LogginUser button {
+  background-color: #bbbbbb;
+}
+.loading {
+  background-color: #0d0d0d;
+  width: 100%;
+  height: 10px;
+  width: 0;
+  padding: 0;
+  border: none;
+  position: absolute;
+  bottom: 15%;
+  left: 0%;
+  font-weight: bolder;
+  background-color: #007bff; /* Cor de fundo para o efeito de preenchimento */
+  border-radius: 100%;
+  animation: moveLoading 1s linear infinite; /* Nome da animação, duração, modo e repetição */
+}
+
+/* animations */
+
+@keyframes moveLoading {
+  0% {
+    left: -1%;
+    width: 3%;
+    height: 2%;
+  }
+  25% {
+    left: 25%;
+    width: 2%;
+    height: 2%;
+  }
+ 
+  75% {
+    left: 75%;
+    width: 2%;
+    height: 2%;
+  }
+  100% {
+    left: 100%;
+    width: 3%;
+    height: 2%;
+  }
 }
