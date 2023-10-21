@@ -1,193 +1,26 @@
-import './ContentsStyles/MacListStyles.css'
+import { useState, useEffect } from "react";
+import "./ContentsStyles/MacListStyles.css";
+import axios from "axios";
+import { async } from "q";
 
 export default function MacList() {
-    return (
-        <>
-            <ul className="MacListConteiner">
-                <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li>
+  const [macData, setMacData] = useState([]);
+ 
 
-                <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li>
-                <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li>
+  return (
+    <>
+      <ul className="MacListConteiner">
+        <li className="MacListLi">
+          <p>MODEL</p>
+          <p>MAC</p>
+          <p>PROBLEM</p>
+          <p>REMOTE ACESS</p>
+        </li>
 
-                <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li>
-                <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li>
-
-                <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li>
-
-                <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li>
-
-                <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li> <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li>
-
-                <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li> <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li>
-
-                <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li>
-
-                <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li>
-
-                <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li>
-
-                <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li>
-
-                <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li> <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li>
-
-                <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li> <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li>
-
-                <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li>
-
-                <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li>
-
-                <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li>
-
-                <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li>
-
-                <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li> <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li>
-
-                <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li> <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li>
-
-                <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li>
-            </ul>
-        </>
-    )
+       
+      </ul>
+    </>
+  );
 }
 
 // "model": "string",
