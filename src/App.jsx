@@ -9,13 +9,13 @@ function App() {
   var user = true
   return (
     <>
-      <div className="">
+      {/* <div className="">
         {user ? <UserLogin/> : ''}
-      </div>
-      {/* <Headers />
+      </div> */}
+      <Headers />
       <SearchBar />
       <HeaderMacList />
-      <MacList /> */}
+      <MacList />
     </>
   )
 }
