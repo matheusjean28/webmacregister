@@ -12,6 +12,8 @@
 
   overflow-y: scroll;
   scroll-behavior: smooth;
+
+  cursor:default;
 }
 .MacListConteiner::-webkit-scrollbar {
   display: none;
