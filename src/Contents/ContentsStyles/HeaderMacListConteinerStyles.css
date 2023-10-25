@@ -20,7 +20,7 @@
 
 .HeaderMacListConteiner p::before{
   content: " | ";
-  margin: 0 5px;
+  margin: 0 15px;
 }
 
 .HeaderMacListConteiner p:first-child::before {

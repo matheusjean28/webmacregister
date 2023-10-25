@@ -12,16 +12,13 @@ export default function MacList() {
                 <li className='MacListLi'>
                     <p>MODEL</p>
                     <p>MAC</p>
-                    <p>PROBLEM</p>
+                    <p>SENSITIVITY</p>
+                    <p>FIBER TIP</p>
+                    <p>MEASUREMENT DATE</p>
                     <p>REMOTE ACESS</p>
+                    <p>PROBLEM</p>
                 </li>
 
-                <li className='MacListLi'>
-                    <p>MODEL</p>
-                    <p>MAC</p>
-                    <p>PROBLEM</p>
-                    <p>REMOTE ACESS</p>
-                </li>
                 
 
                 
