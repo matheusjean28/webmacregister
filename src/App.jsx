@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Headers from "./Contents/Header";
 import SearchBar from "./Contents/SearchBar";
 import MacList from "./Contents/MacList";
@@ -14,7 +14,11 @@ function App() {
     { model: "Model2", mac: "MAC2", problem: false, remoteAccess: true },
   ];
 
-  const [macs, setMacs] = useState(macList);
+  const [macs, setMacs] = useState(localStorage.getItem("macList") ||LocalStorageAndFuncs.FetchDataFromAPI((setMacs)) );
+
+  useEffect(() => {
+    localStorage.setItem('macList', macs);
+  }, [macs])
 
   return (
     <>

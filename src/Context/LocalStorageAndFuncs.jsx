@@ -8,7 +8,7 @@ function LocalStorage(macList) {
   }
 }
 
-  function FetchDataFromAPI() {
+  function FetchDataFromAPI(setMacs) {
     console.log("callhere");
     fetch("http://localhost:5242/MacMainDatabase")
       .then((response) => response.json())
@@ -17,6 +17,7 @@ function LocalStorage(macList) {
           throw new Error("null list");
         } else {
           localStorage.setItem("macList", JSON.stringify(dataMacList));
+          setMacs(...dataMacList)
           console.log("Saving data at localStorage:", dataMacList);
         }
       })
