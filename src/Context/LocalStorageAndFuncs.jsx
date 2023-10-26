@@ -39,8 +39,26 @@ function CheckLocalStorageAndFetch() {
     FetchDataFromAPI();
   }
 }
+
+function GetAndReturnLocalStoreData(){
+  const storedData = localStorage.getItem("macList");
+
+  if(storedData)
+  {
+    const _parsedData = JSON.parse(storedData);
+    return _parsedData;
+  }
+  else
+  {
+    console.log('Theres no data until now, calling function to get data')
+    CheckLocalStorageAndFetch()
+  }
+
+}
+
 export default {
   FetchDataFromAPI,
   LocalStorage,
-  CheckLocalStorageAndFetch
+  CheckLocalStorageAndFetch,
+  GetAndReturnLocalStoreData
 };
