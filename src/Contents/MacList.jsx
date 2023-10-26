@@ -1,9 +1,20 @@
 import "./ContentsStyles/MacListStyles.css";
 import LocalStorageAndFuncs from "../Context/LocalStorageAndFuncs";
+import GlobalContex from '../Context/GlobalContext'
 
 export default function MacList() {
+  
+
   const data = LocalStorageAndFuncs.GetAndReturnLocalStoreData();
   console.log(data);
+
+  if(data == null){
+    return (<>
+      <h4>YOU ALREADY HAVEN'T MAC SAVED! </h4>
+
+    </>)
+  }
+
 
   return (
     <>
@@ -21,15 +32,7 @@ export default function MacList() {
             </li>
           )
         )}
-        <li className="MacListLi">
-          <p>MODEL</p>
-          <p>MAC</p>
-          <p>SENSITIVITY</p>
-          <p>FIBER TIP</p>
-          <p>MEASUREMENT DATE</p>
-          <p>REMOTE ACESS</p>
-          <p>PROBLEM</p>
-        </li>
+
       </ul>
     </>
   );
