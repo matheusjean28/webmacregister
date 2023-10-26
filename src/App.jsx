@@ -14,19 +14,23 @@ function App() {
     { model: "Model2", mac: "MAC2", problem: false, remoteAccess: true },
   ];
 
-  const [macs, setMacs] = useState(localStorage.getItem("macList") ||LocalStorageAndFuncs.FetchDataFromAPI((setMacs)) );
+  const [macs, setMacs] = useState(
+    localStorage.getItem("macList") ||
+      LocalStorageAndFuncs.FetchDataFromAPI(setMacs)
+  );
+  var [create, setCreate] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem('macList', macs);
-  }, [macs])
+    localStorage.setItem("macList", macs);
+  }, [macs]);
 
   return (
     <>
-      <GlobalContext.Provider value={{ macs }}>
+      <GlobalContext.Provider value={{ macs, create, setCreate }}>
         <Headers />
-        <SearchBar />
+        <SearchBar value={{create, setCreate }}/>
         <HeaderMacList />
-        <MacList value={{ macs }} />
+        <MacList value={{ macs, create, setCreate }} />
       </GlobalContext.Provider>
     </>
   );

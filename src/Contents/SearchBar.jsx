@@ -1,5 +1,15 @@
 import './ContentsStyles/SearchBar.css'
+import { useContext } from 'react'
+import { GlobalContext } from '../Context/GlobalContext';
+
 export default function SearchBar() {
+    var { create, setCreate } = useContext(GlobalContext);
+    const handleCreate = (e) => {
+        e.preventDefault()
+        setCreate(!create)
+        
+    }
+    
     return (
         <>
             <div className="SearchBarConteiner">
@@ -12,6 +22,10 @@ export default function SearchBar() {
 
                 <input id="SearchBarTextInput" type="text" placeholder='Input Mac'/>
                 <button id="SubmitSearchButton" className="SubmitSearch" type="submit">Search</button>
+                <button id="createMac" onClick={(e) => {
+                    handleCreate(e)
+                }}>Create</button>
+
             </div>
 
         </>

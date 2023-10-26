@@ -1,6 +1,6 @@
-
 import './ContentsStyles/HeaderMacListConteinerStyles.css'
 export default function HeaderMacList() {
+   
     return (
         <>
             <div className="HeaderMacListConteiner">
