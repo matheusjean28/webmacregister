@@ -9,15 +9,12 @@ import LocalStorageAndFuncs from "./Context/LocalStorageAndFuncs";
 
 function App() {
   LocalStorageAndFuncs.CheckLocalStorageAndFetch();
+  const [macs, setMacs] = useState(localStorage.getItem("macList") || LocalStorageAndFuncs.FetchDataFromAPI((setMacs)) );
   const macList = [
     { model: "Model", mac: "MAC1", problem: true, remoteAccess: false },
     { model: "Model2", mac: "MAC2", problem: false, remoteAccess: true },
   ];
 
-  const [macs, setMacs] = useState(
-    localStorage.getItem("macList") ||
-      LocalStorageAndFuncs.FetchDataFromAPI(setMacs)
-  );
   var [create, setCreate] = useState(false);
 
   useEffect(() => {
