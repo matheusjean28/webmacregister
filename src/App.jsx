@@ -15,6 +15,7 @@ function App() {
     { model: "Model2", mac: "MAC2", problem: false, remoteAccess: true },
   ];
 
+  var [create, setCreate] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("macList", macs);
