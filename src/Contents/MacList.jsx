@@ -1,17 +1,8 @@
 import "./ContentsStyles/MacListStyles.css";
-import CreateMac from "./CreateMac";
-import { useContext, useState } from "react";
-import { GlobalContext } from "../Context/GlobalContext.jsx";
-<<<<<<< HEAD
-
+import LocalStorageAndFuncs from '../Context/LocalStorageAndFuncs.jsx'
 export default function MacList() {
-=======
-import "./ContentsStyles/MacListStyles.css";
-import LocalStorageAndFuncs from "../Context/LocalStorageAndFuncs";
-import GlobalContex from '../Context/GlobalContext'
 
-export default function MacList() {
-  
+
 
   const data = LocalStorageAndFuncs.GetAndReturnLocalStoreData();
   console.log(data);
@@ -42,32 +33,6 @@ export default function MacList() {
         )}
 
       </ul>
-    </>
-  );
->>>>>>> fe71b14f05ccdda54a6341b720f776eab1b24866
-  var { create, setCreate } = useContext(GlobalContext);
-  console.log(create);
-  return (
-    <>
-      {create ? (
-        <CreateMac />   
-      ) : (
-        <ul className="MacListConteiner">
-          <li className="MacListLi">
-            <p>MODEL</p>
-            <p>MAC</p>
-            <p>PROBLEM</p>
-            <p>REMOTE ACESS</p>
-          </li>
-
-          <li className="MacListLi">
-            <p>MODEL</p>
-            <p>MAC</p>
-            <p>PROBLEM</p>
-            <p>REMOTE ACESS</p>
-          </li>
-        </ul>
-      )}
     </>
   );
 }
