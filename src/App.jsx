@@ -17,16 +17,16 @@ function App() {
 
 
   useEffect(() => {
-    localStorage.setItem('macList', macs);
-  }, [macs])
+    localStorage.setItem("macList", macs);
+  }, [macs]);
 
   return (
     <>
-      <GlobalContext.Provider value={{ macs }}>
+      <GlobalContext.Provider value={{ macs, create, setCreate }}>
         <Headers />
-        <SearchBar />
+        <SearchBar value={{create, setCreate }}/>
         <HeaderMacList />
-        <MacList value={{ macs }} />
+        <MacList value={{ macs, create, setCreate }} />
       </GlobalContext.Provider>
     </>
   );
