@@ -11,6 +11,7 @@ export default function HeaderMacList() {
                     <p>MEASUREMENT DATE</p>
                     <p>REMOTE ACESS</p>
                     <p>PROBLEM</p>
+                    
             </div>
         </>
     )
