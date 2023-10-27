@@ -5,27 +5,23 @@ import SearchBar from "./Contents/SearchBar";
 import MacList from "./Contents/MacList";
 import HeaderMacList from "./Contents/HeaderMacList";
 import { GlobalContext } from "./Context/GlobalContext";
-import LocalStorageAndFuncs from "./Context/LocalStorageAndFuncs";
 
 function App() {
-  LocalStorageAndFuncs.CheckLocalStorageAndFetch();
-  const [macs, setMacs] = useState(localStorage.getItem("macList") || LocalStorageAndFuncs.FetchDataFromAPI((setMacs)) );
-  const macList = [
-    { model: "Model", mac: "MAC1", problem: true, remoteAccess: false },
-    { model: "Model2", mac: "MAC2", problem: false, remoteAccess: true },
-  ];
+  const initialMacs = JSON.parse(localStorage.getItem("macList")) || [];
+
+  const [macs, setMacs] = useState(initialMacs);
 
   var [create, setCreate] = useState(false);
 
   useEffect(() => {
-    localStorage.setItem("macList", macs);
+    localStorage.setItem("macList", JSON.stringify(macs));
   }, [macs]);
 
   return (
     <>
       <GlobalContext.Provider value={{ macs, create, setCreate }}>
         <Headers />
-        <SearchBar value={{create, setCreate }}/>
+        <SearchBar value={{ create, setCreate }} />
         <HeaderMacList />
         <MacList value={{ macs, create, setCreate }} />
       </GlobalContext.Provider>

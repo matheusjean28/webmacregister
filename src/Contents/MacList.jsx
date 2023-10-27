@@ -11,12 +11,14 @@ export default function MacList() {
   console.log(data);
 
   if (data == null) {
+    localStorage.CheckLocalStorageAndFetch();
     return (
       <>
         <h4>YOU ALREADY HAVEN'T MAC SAVED! </h4>
       </>
     );
   }
+  else {
 
   return (
     <>
@@ -36,8 +38,4 @@ export default function MacList() {
     </>
   );
 }
-
-// "model": "string",
-// "mac": "string",
-// "problem": "boolean",
-// "remoteAccess": "boolean"
+}
