@@ -8,57 +8,55 @@ function LocalStorage(macList) {
   }
 }
 
-  function FetchDataFromAPI(setMacs) {
-    console.log("callhere");
-    fetch("http://localhost:5242/MacMainDatabase")
-      .then((response) => response.json())
-      .then((dataMacList) => {
-        if (dataMacList == null) {
-          throw new Error("null list");
-        } else {
-          localStorage.setItem("macList", JSON.stringify(dataMacList));
-          setMacs(...dataMacList)
-          console.log("Saving data at localStorage:", dataMacList);
-        }
-      })
-      .catch((error) => {
-        console.error("Error on get Data From Api:", error);
-      });
-  }
+function FetchDataFromAPI(setMacs, setLoading) {
+  console.log("callhere");
+  fetch("http://localhost:5242/MacMainDatabase")
+    .then((response) => response.json())
+    .then((dataMacList) => {
+      if (dataMacList == null) {
+        throw new Error("null list");
+      } else {
+        localStorage.setItem("macList", JSON.stringify(dataMacList));
+        setMacs(...dataMacList);
+        setLoading(!loading);
 
-  
+        console.log("Saving data at localStorage:", dataMacList);
+      }
+    })
+    .catch((error) => {
+      console.error("Error on get Data From Api:", error);
+    });
+}
 
-function CheckLocalStorageAndFetch() {
+function CheckLocalStorageAndFetch(loading, SetLoading) {
   const storedData = localStorage.getItem("macList");
+  console.log("loading");
 
-  if (storedData) {
+  if (storedData != null) {
     const _parsedData = JSON.parse(storedData);
+    console.log(_parsedData);
     console.log("Getting data from localStorage:", _parsedData);
   } else {
     console.log("Theres no data at localStorage, calling api");
-    FetchDataFromAPI();
+    FetchDataFromAPI(setMacs,loading, SetLoading);
   }
 }
 
-function GetAndReturnLocalStoreData(){
+function GetAndReturnLocalStoreData() {
   const storedData = localStorage.getItem("macList");
 
-  if(storedData)
-  {
+  if (storedData ) {
     const _parsedData = JSON.parse(storedData);
     return _parsedData;
+  } else {
+    console.log("Theres no data until now, calling function to get data");
+    CheckLocalStorageAndFetch();
   }
-  else
-  {
-    console.log('Theres no data until now, calling function to get data')
-    CheckLocalStorageAndFetch()
-  }
-
 }
 
 export default {
   FetchDataFromAPI,
   LocalStorage,
   CheckLocalStorageAndFetch,
-  GetAndReturnLocalStoreData
+  GetAndReturnLocalStoreData,
 };
