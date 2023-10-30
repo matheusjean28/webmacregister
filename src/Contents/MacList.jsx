@@ -4,14 +4,14 @@ import { useContext } from "react";
 import { GlobalContext } from "../Context/GlobalContext";
 import LocalStorageAndFuncs from "../Context/LocalStorageAndFuncs.jsx";
 
-export default function MacList() {
-  const data = LocalStorageAndFuncs.GetAndReturnLocalStoreData();
+export default function MacList( macs, create, setCreate, loading, SetLoading ) {
+  const data = LocalStorageAndFuncs.GetAndReturnLocalStoreData( macs, create, setCreate, loading, SetLoading);
   var { create, setCreate } = useContext(GlobalContext);
 
   console.log(data);
 
   if (data == null) {
-    localStorage.CheckLocalStorageAndFetch();
+    LocalStorageAndFuncs.CheckLocalStorageAndFetch( macs, create, setCreate, loading, SetLoading );
     return (
       <>
         <h4>YOU ALREADY HAVEN'T MAC SAVED! </h4>

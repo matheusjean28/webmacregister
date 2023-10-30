@@ -8,51 +8,51 @@ function LocalStorage(macList) {
   }
 }
 
-function FetchDataFromAPI(setMacs, setLoading) {
+function FetchDataFromAPI(setMacs,loading, SetLoading) {
   console.log("callhere");
   fetch("http://localhost:5242/MacMainDatabase")
     .then((response) => response.json())
     .then((dataMacList) => {
-      if (dataMacList == null) {
-        throw new Error("null list");
-      } else {
+      if (dataMacList != null) {
         localStorage.setItem("macList", JSON.stringify(dataMacList));
         setMacs(...dataMacList);
-        setLoading(!loading);
+        SetLoading(!loading);
 
         console.log("Saving data at localStorage:", dataMacList);
       }
     })
     .catch((error) => {
-      console.error("Error on get Data From Api:", error);
+      console.error("Erro ao obter dados da API:", error);
     });
 }
 
-function CheckLocalStorageAndFetch(loading, SetLoading) {
+function CheckLocalStorageAndFetch(setMacs,loading, SetLoading) {
   const storedData = localStorage.getItem("macList");
   console.log("loading");
 
-  if (storedData != null) {
+  if (storedData != null && storedData != "undefined") {
     const _parsedData = JSON.parse(storedData);
-    console.log(_parsedData);
-    console.log("Getting data from localStorage:", _parsedData);
+    console.log("Getting data from localStorage:");
   } else {
     console.log("Theres no data at localStorage, calling api");
     FetchDataFromAPI(setMacs,loading, SetLoading);
   }
 }
 
-function GetAndReturnLocalStoreData() {
+function GetAndReturnLocalStoreData(setMacs,loading, SetLoading) {
   const storedData = localStorage.getItem("macList");
 
-  if (storedData ) {
+  if (storedData && storedData != "undefined") {
     const _parsedData = JSON.parse(storedData);
     return _parsedData;
   } else {
     console.log("Theres no data until now, calling function to get data");
-    CheckLocalStorageAndFetch();
+    CheckLocalStorageAndFetch(setMacs,loading, SetLoading);
   }
 }
+
+
+
 
 export default {
   FetchDataFromAPI,

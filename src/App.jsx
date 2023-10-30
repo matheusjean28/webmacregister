@@ -10,21 +10,20 @@ import LocalStorageAndFuncs from "./Context/LocalStorageAndFuncs";
 import CreateMac from "./Contents/CreateMac";
 
 function App() {
-  const [macs, setMacs] = useState(
-    JSON.parse(localStorage.getItem("macList")) ||
-    LocalStorageAndFuncs.CheckLocalStorageAndFetch(setMacs, SetLoading)
-  );
+  const [macs, setMacs] = useState();
   const [loading, SetLoading] = useState(true);
-
   const [create, setCreate] = useState(false);
 
-  useEffect(() => {
-    localStorage.setItem("macList", JSON.stringify(macs));
-  }, [macs]);
+  useEffect(() => {}, [macs]);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = LocalStorageAndFuncs.FetchDataFromAPI();
+        const data = LocalStorageAndFuncs.FetchDataFromAPI(
+          setMacs,
+          loading,
+          SetLoading
+        );
         setMacs(data);
         SetLoading(false);
       } catch (error) {
@@ -35,7 +34,6 @@ function App() {
 
     fetchData();
   }, []);
-
   return (
     <>
       <GlobalContext.Provider
@@ -53,7 +51,7 @@ function App() {
         ) : (
           <>
             <HeaderMacList />
-            <MacList value={{ macs, create, setCreate }} />
+            <MacList value={{ macs, create, setCreate, loading, SetLoading }} />
           </>
         )}
       </GlobalContext.Provider>
