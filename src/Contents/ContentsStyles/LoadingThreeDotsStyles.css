@@ -1,0 +1,47 @@
+.ThreeDots {
+    height: 1px;
+}
+
+
+.ThreeDots {
+    background-color: #0d0d0d;
+    width: 100%;
+    height: 5px;
+    width: 0;
+    padding: 0;
+    border: none;
+    position: absolute;
+    top: 10%;
+    left: 0%;
+    font-weight: bolder;
+    background-color: #007bff;
+    border-radius: 100%;
+    animation: moveLoading 2s linear infinite;
+  }
+  
+  /* animations */
+  
+  @keyframes moveLoading {
+    0% {
+      left: -1%;
+      width: 3%;
+      height: 0.1%;
+    }
+    25% {
+      left: 25%;
+      width: 2%;
+      height: 0.1%;
+    }
+   
+    75% {
+      left: 75%;
+      width: 2%;
+      height: 0.1%;
+    }
+    100% {
+      left: 100%;
+      width: 3%;
+      height: 0.1%;
+    }
+  }
+  

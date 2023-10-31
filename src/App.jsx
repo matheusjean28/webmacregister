@@ -8,6 +8,7 @@ import LoadingData from "./Contents/LoadingData.jsx";
 import { GlobalContext } from "./Context/GlobalContext";
 import LocalStorageAndFuncs from "./Context/LocalStorageAndFuncs";
 import CreateMac from "./Contents/CreateMac";
+import LoadingThreeDots from "./Contents/LoadingThreeDots";
 
 function App() {
   const [macs, setMacs] = useState();
@@ -40,6 +41,7 @@ function App() {
         value={{ macs, create, setCreate, loading, SetLoading }}
       >
         <Headers />
+       {true ? <LoadingThreeDots value={{loading}}/> : "" }
         <SearchBar value={{ create, setCreate }} />
         {create ? (
           <>
