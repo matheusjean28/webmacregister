@@ -8,11 +8,13 @@ function LocalStorage(macList) {
   }
 }
 
-function FetchDataFromAPI(setMacs,loading, SetLoading) {
+function FetchDataFromAPI(setMacs, loading, SetLoading) {
   fetch("http://localhost:5242/MacMainDatabase")
     .then((response) => response.json())
     .then((dataMacList) => {
       if (dataMacList != null) {
+        console.log(macs, "dentro do fetch");
+
         localStorage.setItem("macList", JSON.stringify(dataMacList));
         setMacs(...dataMacList);
         SetLoading(!loading);
@@ -25,7 +27,7 @@ function FetchDataFromAPI(setMacs,loading, SetLoading) {
     });
 }
 
-function CheckLocalStorageAndFetch(setMacs,loading, SetLoading) {
+function CheckLocalStorageAndFetch(setMacs, loading, SetLoading) {
   const storedData = localStorage.getItem("macList");
   console.log("loading");
 
@@ -34,11 +36,11 @@ function CheckLocalStorageAndFetch(setMacs,loading, SetLoading) {
     console.log("Getting data from localStorage:");
   } else {
     console.log("Theres no data at localStorage, calling api");
-    FetchDataFromAPI(setMacs,loading, SetLoading);
+    FetchDataFromAPI(setMacs, loading, SetLoading);
   }
 }
 
-function GetAndReturnLocalStoreData(setMacs,loading, SetLoading) {
+function GetAndReturnLocalStoreData(setMacs, loading, SetLoading) {
   const storedData = localStorage.getItem("macList");
 
   if (storedData && storedData != "undefined") {
@@ -46,12 +48,9 @@ function GetAndReturnLocalStoreData(setMacs,loading, SetLoading) {
     return _parsedData;
   } else {
     console.log("Theres no data until now, calling function to get data");
-    CheckLocalStorageAndFetch(setMacs,loading, SetLoading);
+    CheckLocalStorageAndFetch(setMacs, loading, SetLoading);
   }
 }
-
-
-
 
 export default {
   FetchDataFromAPI,

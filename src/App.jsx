@@ -30,10 +30,9 @@ function App() {
         throw new console.error(error);
       }
     };
-
+    console.log(macs,"dentro do fetch")
     fetchData();
-  }, []);
-  console.log(macs)
+  }, [macs]);
 
   return (
     <>

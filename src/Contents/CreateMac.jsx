@@ -3,7 +3,7 @@ import "./ContentsStyles/CreateMacStyles.css";
 
 export default function CreateMac({macs, setMacs,create, setCreate}) {
 
-    macs = [];
+  console.log(macs)
 
     const [model, setModel] = useState("DM955");
     const [mac, setMac] = useState("");
@@ -11,7 +11,6 @@ export default function CreateMac({macs, setMacs,create, setCreate}) {
     const [signalRX, setSignalRX] = useState("");
     const [checkDate, setCheckDate] = useState("");
     const [remoteAccess, setRemoteAccess] = useState(false);
-    console.log(macs)
 
     const handleSubmitForm = (e) => {
       e.preventDefault();
