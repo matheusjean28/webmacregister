@@ -10,3 +10,9 @@ Filter and search items
 Edit & view user mac details
 
 
+
+
+-- 
+atention
+    just call localstorage when final array is Done
+    otherwise don't do it

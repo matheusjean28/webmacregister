@@ -7,17 +7,17 @@ function LocalStorage(macList) {
     console.error("Something was error at localStorage:", error);
   }
 }
-
 function FetchDataFromAPI(setMacs, loading, SetLoading) {
   fetch("http://localhost:5242/MacMainDatabase")
     .then((response) => response.json())
     .then((dataMacList) => {
       if (dataMacList != null) {
-        console.log(macs, "dentro do fetch");
+        console.log(dataMacList, "dentro do fetch");
 
         localStorage.setItem("macList", JSON.stringify(dataMacList));
-        setMacs(...dataMacList);
-        SetLoading(!loading);
+        setMacs(dataMacList);
+        SetLoading(false);
+        console.log(dataMacList);
 
         console.log("Saving data at localStorage:", dataMacList);
       }
@@ -27,34 +27,34 @@ function FetchDataFromAPI(setMacs, loading, SetLoading) {
     });
 }
 
-function CheckLocalStorageAndFetch(setMacs, loading, SetLoading) {
+function CheckLocalStorageOrFetch(setMacs, loading, SetLoading) {
   const storedData = localStorage.getItem("macList");
-  console.log("loading");
 
-  if (storedData != null && storedData != "undefined") {
+  if (storedData !== null && storedData != "undefined") {
     const _parsedData = JSON.parse(storedData);
-    console.log("Getting data from localStorage:");
+    setMacs(_parsedData);
   } else {
-    console.log("Theres no data at localStorage, calling api");
-    FetchDataFromAPI(setMacs, loading, SetLoading);
+    console.log("Theres no data at localStorage, calling API");
+    if (SetLoading) {
+      SetLoading(true);
+    }
+    FetchDataFromAPI(setMacs, SetLoading);
   }
 }
 
-function GetAndReturnLocalStoreData(setMacs, loading, SetLoading) {
-  const storedData = localStorage.getItem("macList");
 
-  if (storedData && storedData != "undefined") {
-    const _parsedData = JSON.parse(storedData);
-    return _parsedData;
+
+function GetAndUpdateData(setMacs, currentStateMacList) {
+  if (Array.isArray(currentStateMacList)) {
+    setMacs(currentStateMacList);
   } else {
-    console.log("Theres no data until now, calling function to get data");
-    CheckLocalStorageAndFetch(setMacs, loading, SetLoading);
+    throw new Error("Object passed to this function is not an array type!");
   }
 }
 
 export default {
+  CheckLocalStorageOrFetch,
+  GetAndUpdateData,
   FetchDataFromAPI,
   LocalStorage,
-  CheckLocalStorageAndFetch,
-  GetAndReturnLocalStoreData,
 };

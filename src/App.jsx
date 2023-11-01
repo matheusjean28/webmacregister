@@ -11,48 +11,42 @@ import CreateMac from "./Contents/CreateMac";
 import LoadingThreeDots from "./Contents/LoadingThreeDots";
 
 function App() {
-  const [macs, setMacs] = useState();
+  const [macs, setMacs] = useState([]);
   const [loading, SetLoading] = useState(true);
   const [create, setCreate] = useState(false);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = LocalStorageAndFuncs.FetchDataFromAPI(
-          setMacs,
-          loading,
-          SetLoading
-        );
-        setMacs(data);
-        SetLoading(false);
-      } catch (error) {
-        SetLoading(false);
-        throw new console.error(error);
-      }
-    };
-    console.log(macs,"dentro do fetch")
-    fetchData();
-  }, [macs]);
+  () => {
+    LocalStorageAndFuncs.CheckLocalStorageOrFetch(setMacs, loading, SetLoading);
+  };
+
+  useEffect(()=> {
+    <MacList macs={macs} setMacs={setMacs} />
+  }, [macs])
 
   return (
     <>
       <GlobalContext.Provider
-        value={{macs, setMacs, create, setCreate, loading, SetLoading }}
+        value={{ macs, setMacs, create, setCreate, loading, SetLoading }}
       >
         <Headers />
-       {true ? <LoadingThreeDots value={{loading}}/> : "" }
+        {true ? <LoadingThreeDots value={{ loading }} /> : ""}
         <SearchBar value={{ create, setCreate }} />
         {create ? (
           <>
             <HeaderMacList />
-            <CreateMac macs={macs} setMacs={setMacs} create={create} setCreate={setCreate} />
+            <CreateMac
+              macs={macs}
+              setMacs={setMacs}
+              create={create}
+              setCreate={setCreate}
+            />
           </>
         ) : loading ? (
           <LoadingData />
         ) : (
           <>
             <HeaderMacList />
-            <MacList  macs={macs} setMacs={setMacs} value={{  create, setCreate, loading, SetLoading }} />
+            <MacList macs={macs} setMacs={setMacs} />
           </>
         )}
       </GlobalContext.Provider>
