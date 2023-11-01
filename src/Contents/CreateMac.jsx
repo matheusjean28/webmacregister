@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./ContentsStyles/CreateMacStyles.css";
 
-export default function CreateMac({macs, setMacs}) {
+export default function CreateMac({macs, setMacs,create, setCreate}) {
 
     macs = [];
 
@@ -27,6 +27,7 @@ export default function CreateMac({macs, setMacs}) {
 
       const updatedMacs = [...macs, newMacData];
       setMacs(updatedMacs);
+      setCreate(!create)
     };
 
     return (

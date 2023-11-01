@@ -46,7 +46,7 @@ function App() {
         {create ? (
           <>
             <HeaderMacList />
-            <CreateMac macs={macs} setMacs={setMacs} />
+            <CreateMac macs={macs} setMacs={setMacs} create={create} setCreate={setCreate} />
           </>
         ) : loading ? (
           <LoadingData />
