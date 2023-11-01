@@ -9,7 +9,6 @@ function LocalStorage(macList) {
 }
 
 function FetchDataFromAPI(setMacs,loading, SetLoading) {
-  console.log("callhere");
   fetch("http://localhost:5242/MacMainDatabase")
     .then((response) => response.json())
     .then((dataMacList) => {

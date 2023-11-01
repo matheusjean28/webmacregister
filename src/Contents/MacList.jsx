@@ -8,7 +8,6 @@ export default function MacList( macs, create, setCreate, loading, SetLoading ) 
   const data = LocalStorageAndFuncs.GetAndReturnLocalStoreData( macs, create, setCreate, loading, SetLoading);
   var { create, setCreate } = useContext(GlobalContext);
 
-  console.log(data);
 
   if (data == null) {
     LocalStorageAndFuncs.CheckLocalStorageAndFetch( macs, create, setCreate, loading, SetLoading );

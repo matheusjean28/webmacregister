@@ -15,8 +15,6 @@ function App() {
   const [loading, SetLoading] = useState(true);
   const [create, setCreate] = useState(false);
 
-  useEffect(() => {}, [macs]);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -35,10 +33,12 @@ function App() {
 
     fetchData();
   }, []);
+  console.log(macs)
+
   return (
     <>
       <GlobalContext.Provider
-        value={{ macs, create, setCreate, loading, SetLoading }}
+        value={{macs, setMacs, create, setCreate, loading, SetLoading }}
       >
         <Headers />
        {true ? <LoadingThreeDots value={{loading}}/> : "" }
@@ -46,14 +46,14 @@ function App() {
         {create ? (
           <>
             <HeaderMacList />
-            <CreateMac />
+            <CreateMac macs={macs} setMacs={setMacs} />
           </>
         ) : loading ? (
           <LoadingData />
         ) : (
           <>
             <HeaderMacList />
-            <MacList value={{ macs, create, setCreate, loading, SetLoading }} />
+            <MacList  macs={macs} setMacs={setMacs} value={{  create, setCreate, loading, SetLoading }} />
           </>
         )}
       </GlobalContext.Provider>

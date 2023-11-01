@@ -1,1 +1,12 @@
-Do a Login & Profile interface >> here now
+Do a Login & Profile interface >> Done
+    User Interface ... 
+
+Validate & Create a mac >> Here now
+
+Post to .Csv File
+
+Filter and search items
+
+Edit & view user mac details
+
+
