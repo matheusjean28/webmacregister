@@ -7,6 +7,7 @@ function LocalStorage(macList) {
     console.error("Something was error at localStorage:", error);
   }
 }
+
 function FetchDataFromAPI(setMacs, loading, SetLoading) {
   fetch("http://localhost:5242/MacMainDatabase")
     .then((response) => response.json())
@@ -33,7 +34,6 @@ function CheckLocalStorageOrFetch(setMacs, loading, SetLoading) {
   if (storedData) {
     const _parsedData = JSON.parse(storedData);
     setMacs(_parsedData);
-    console.log(_parsedData)
   } else {
     FetchDataFromAPI(setMacs, SetLoading);
     console.log("Theres no data at localStorage, calling API");

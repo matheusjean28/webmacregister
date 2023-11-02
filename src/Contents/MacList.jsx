@@ -4,16 +4,17 @@ import { useContext } from "react";
 import { GlobalContext } from "../Context/GlobalContext";
 
 export default function MacList({macs}) {
+  console.log(macs)
   var { create, setCreate } = useContext(GlobalContext);
   
-  if (macs == null) {
-   return (
-    <>
-    <div className="MacListConteiner">
-        <h4>YOU ALREADY HAVEN'T MAC SAVED! </h4>
-    </div>
-    </>
-   )
+  if (macs.length === 0) {
+    return (
+      <>
+        <div className="MacListConteiner">
+          <h4>YOU DON'T HAVE ANY MACS SAVED YET! </h4>
+        </div>
+      </>
+    );
   } else {
     return (
       <>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./ContentsStyles/CreateMacStyles.css";
-import LocalStorageAndFuncs from "../Context/LocalStorageAndFuncs";
+
 export default function CreateMac({ macs, setMacs, create, setCreate }) {
   const [model, setModel] = useState("DM955");
   const [mac, setMac] = useState("");

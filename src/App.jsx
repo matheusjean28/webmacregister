@@ -15,10 +15,7 @@ function App() {
   const [loading, SetLoading] = useState(true);
   const [create, setCreate] = useState(false);
 
-  () => {
-    LocalStorageAndFuncs.CheckLocalStorageOrFetch(setMacs, loading, SetLoading);
-  };
-
+ 
   useEffect(() => {
     LocalStorageAndFuncs.CheckLocalStorageOrFetch(setMacs, loading, SetLoading);
   }, []);
@@ -29,7 +26,7 @@ function App() {
         value={{ macs, setMacs, create, setCreate, loading, SetLoading }}
       >
         <Headers />
-        {true ? <LoadingThreeDots value={{ loading }} /> : ""}
+        {loading ? <LoadingThreeDots value={{ loading }} /> : ""}
         <SearchBar value={{ create, setCreate }} />
         {create ? (
           <>
@@ -41,7 +38,7 @@ function App() {
               setCreate={setCreate}
             />
           </>
-        ) : loading ? (
+        ) : false ? (
           <LoadingData />
         ) : (
           <>
