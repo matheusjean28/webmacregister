@@ -3,8 +3,6 @@ import "./ContentsStyles/CreateMacStyles.css";
 
 export default function CreateMac({macs, setMacs,create, setCreate}) {
 
-  console.log(macs)
-
     const [model, setModel] = useState("DM955");
     const [mac, setMac] = useState("");
     const [problem, setProblem] = useState("");

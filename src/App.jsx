@@ -11,7 +11,7 @@ import CreateMac from "./Contents/CreateMac";
 import LoadingThreeDots from "./Contents/LoadingThreeDots";
 
 function App() {
-  const [macs, setMacs] = useState([]);
+  const [macs, setMacs] = useState();
   const [loading, SetLoading] = useState(true);
   const [create, setCreate] = useState(false);
 

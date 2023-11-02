@@ -29,16 +29,17 @@ function FetchDataFromAPI(setMacs, loading, SetLoading) {
 
 function CheckLocalStorageOrFetch(setMacs, loading, SetLoading) {
   const storedData = localStorage.getItem("macList");
-
-  if (storedData !== null && storedData != "undefined") {
+  console.log(storedData)
+  if (storedData) {
     const _parsedData = JSON.parse(storedData);
     setMacs(_parsedData);
+    console.log(_parsedData)
   } else {
+    FetchDataFromAPI(setMacs, SetLoading);
     console.log("Theres no data at localStorage, calling API");
     if (SetLoading) {
       SetLoading(true);
     }
-    FetchDataFromAPI(setMacs, SetLoading);
   }
 }
 
