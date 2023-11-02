@@ -53,6 +53,8 @@ function GetAndUpdateData(setMacs, currentStateMacList) {
   }
 }
 
+
+
 export default {
   CheckLocalStorageOrFetch,
   GetAndUpdateData,

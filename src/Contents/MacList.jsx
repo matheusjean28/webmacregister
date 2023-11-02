@@ -2,11 +2,10 @@ import "./ContentsStyles/MacListStyles.css";
 import CreateMac from "./CreateMac.jsx";
 import { useContext } from "react";
 import { GlobalContext } from "../Context/GlobalContext";
-import LocalStorageAndFuncs from "../Context/LocalStorageAndFuncs.jsx";
 
-export default function MacList(macs) {
+export default function MacList({macs}) {
   var { create, setCreate } = useContext(GlobalContext);
-
+  
   if (macs == null) {
    return (
     <>
