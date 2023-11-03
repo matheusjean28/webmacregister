@@ -22,7 +22,7 @@ export default function MacList({macs}) {
           {create ? (
             <CreateMac />
           ) : (
-            Array.from(macs).map(
+            Array.from(macs).reverse().map(
               ({ id, mac, model, problem, remoteAccess }) => (
                 <li key={id} className="MacListLi">
                   <p>{model}</p>
