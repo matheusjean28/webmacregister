@@ -27,11 +27,11 @@ export default function MacList({macs}) {
                 <li key={id} className="MacListLi">
                   <p>{model}</p>
                   <p>{mac}</p>
+                  <p>{problem.toString()}</p>
                   <p>{id}</p>
                   <p>-25.00 </p>
                   <p>22 July </p>
                   <p>{remoteAccess.toString()} </p>
-                  <p>{problem.toString()}</p>
                 </li>
               )
             )
