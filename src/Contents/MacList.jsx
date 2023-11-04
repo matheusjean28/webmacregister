@@ -4,14 +4,22 @@ import { useContext } from "react";
 import { GlobalContext } from "../Context/GlobalContext";
 
 export default function MacList({macs}) {
-  console.log(macs)
   var { create, setCreate } = useContext(GlobalContext);
-  
+
+  const handleCreate = (e) => {
+    e.preventDefault();
+    setCreate(!create);
+
+  }
+
   if (macs.length === 0) {
     return (
       <>
-        <div className="MacListConteiner">
-          <h4>YOU DON'T HAVE ANY MACS SAVED YET! </h4>
+        <div className="MacListEmpytList">
+          <h4 >YOU DON'T HAVE ANY MACS SAVED YET! </h4>
+          <button onClick={(e) => {
+            handleCreate(e);
+          }} className="MacListEmpytListButton" >Create Mac</button>
         </div>
       </>
     );

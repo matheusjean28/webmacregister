@@ -38,3 +38,32 @@
   text-align: center;
   padding-left: 10px;
 }
+
+.MacListEmpytList{
+  display: flex;
+  place-content: center;
+  place-items: center;
+  flex-direction: column;
+  margin: auto;
+  height: 440px;
+  width: 100%;
+
+  padding: 5px 10px;
+  border-radius: 10px;
+  background: #005dae transparent;
+  box-shadow: inset 5px 5px 10px #1b1b1b, inset -5px -5px 18px #0095ff45;
+
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.MacListEmpytList::-webkit-scrollbar {
+  display: none;
+}
+
+.MacListEmpytListButton{
+  padding: 5px;
+  border-radius: 5px;
+  color: #1b1b1b;
+  font-weight: bolder;
+}
