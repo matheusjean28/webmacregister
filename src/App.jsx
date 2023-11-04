@@ -30,7 +30,7 @@ function App() {
         <>
           <SearchBar value={{ create, setCreate, createModel, setCreateModel }} />
           <CreateDeviceModel />
-          
+
         </>
       ) : (
         <>
