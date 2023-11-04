@@ -28,22 +28,22 @@ function App() {
       {loading ? <LoadingThreeDots /> : ""}
       {createModel ? (
         <>
-          <SearchBar value={{ create, setCreate }} />
-          <HeaderMacList />
+          <SearchBar value={{ create, setCreate, createModel, setCreateModel }} />
           <CreateDeviceModel />
+          
         </>
       ) : (
         <>
           <SearchBar value={{ create, setCreate }} />
           {create ? (
             <>
-              <HeaderMacList />
               <CreateMac
                 macs={macs}
                 setMacs={setMacs}
                 create={create}
                 setCreate={setCreate}
               />
+
             </>
           ) : loading ? (
             <LoadingData />

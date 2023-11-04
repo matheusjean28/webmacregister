@@ -6,13 +6,19 @@ export default function SearchBar() {
   var { create, setCreate, createModel, setCreateModel } = useContext(GlobalContext);
   const handleCreate = (e) => {
     e.preventDefault();
+    if (createModel) {
+      setCreateModel(false);
+    }
     setCreate(!create);
   };
 
 
   const handleCreateModel = (e) => {
     e.preventDefault();
-    setCreateModel(!createModel);
+    if (create) {
+      setCreate(false);
+    }
+    setCreateModel(!createModel)
   };
   return (
     <>

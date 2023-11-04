@@ -1,12 +1,12 @@
 import './ContentsStyles/CreateDeviceModelStyles.css'
 
-export default function CreateDeviceModel(  ) {
+export default function CreateDeviceModel() {
     return (
         <>
-        <div className="CreateDeviceModelConteiner">
+            <div className="CreateDeviceModelConteiner">
 
-        <p className='teste'>CreateDeviceModel</p>
-        </div>
+                <p className='teste'>CreateDeviceModel</p>
+            </div>
         </>
     )
 }
