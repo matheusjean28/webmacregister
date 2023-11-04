@@ -16,6 +16,7 @@ export default function MacList({macs}) {
     return (
       <>
         <div className="MacListEmpytList">
+          <img className="notfound" src="public/notfound.png"  />
           <h4 >YOU DON'T HAVE ANY MACS SAVED YET! </h4>
           <button onClick={(e) => {
             handleCreate(e);
