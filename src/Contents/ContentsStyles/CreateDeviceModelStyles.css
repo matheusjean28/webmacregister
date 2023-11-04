@@ -19,6 +19,13 @@
   display: none;
 }
 
+.CreateDeviceModelConteiner input, select {
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  color: whitesmoke;
+}
+
 .CreateDeviceMacForm {
   text-align: center;
   position: relative;
@@ -26,7 +33,7 @@
   flex-direction: column;
 
   background-color: #1b1b1b;
-  padding: 100px 50px;
+  padding: 50px;
   border-radius: 10px;
 
   gap: 10px;
@@ -44,4 +51,17 @@
   font-weight: bolder;
 
   border-radius: 100%;
+}
+
+
+.CreateButton {
+
+   padding: 5px;
+   border-radius: 5px;
+
+   text-align: center;
+
+   
+   margin: 0 20%;
+   margin-top: 15px;
 }

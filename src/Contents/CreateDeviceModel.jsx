@@ -9,12 +9,13 @@ export default function CreateDeviceModel() {
         setCreateModel(false);
     }
 
+    
     return (
         <>
             <div className="CreateDeviceModelConteiner">
                 <form className="CreateDeviceMacForm" action="#">
-                    <button  className='close' onClick={(e) => {
-                        handleCloseButton (e);
+                    <button className='close' onClick={(e) => {
+                        handleCloseButton(e);
                     }}>x</button>
                     <h4>CREATE  <br /> DEVICE MODEL</h4>
 
@@ -25,8 +26,10 @@ export default function CreateDeviceModel() {
                         <option value="Router">Router </option>
                         <option value="Bridge">Bridge </option>
                         <option value="Router/Bridge">Router/Bridge </option>
+                    
 
                     </select>
+                    <button className='CreateButton' >Create</button>
                 </form>
             </div>
         </>
