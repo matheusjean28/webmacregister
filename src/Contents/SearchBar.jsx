@@ -3,12 +3,17 @@ import { useContext } from "react";
 import { GlobalContext } from "../Context/GlobalContext";
 
 export default function SearchBar() {
-  var { create, setCreate } = useContext(GlobalContext);
+  var { create, setCreate, createModel, setCreateModel } = useContext(GlobalContext);
   const handleCreate = (e) => {
     e.preventDefault();
     setCreate(!create);
   };
 
+
+  const handleCreateModel = (e) => {
+    e.preventDefault();
+    setCreateModel(!createModel);
+  };
   return (
     <>
       <div className="SearchBarConteiner">
@@ -30,6 +35,15 @@ export default function SearchBar() {
           }}
         >
           Create
+        </button>
+
+        <button
+          id="createMac"
+          onClick={(e) => {
+            handleCreateModel(e);
+          }}
+        >
+          CreateModel
         </button>
       </div>
     </>
