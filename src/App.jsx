@@ -45,7 +45,7 @@ function App() {
               />
 
             </>
-          ) : loading ? (
+          ) : false ? (
             <LoadingData />
           ) : (
             <>
