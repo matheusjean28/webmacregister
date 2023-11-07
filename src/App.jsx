@@ -15,6 +15,7 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [create, setCreate] = useState(false);
   const [createModel, setCreateModel] = useState(false);
+  const [deviceModel, setDeviceModel] = useState([]);
 
   useEffect(() => {
     LocalStorageAndFuncs.CheckLocalStorageOrFetch(setMacs, loading, setLoading);
@@ -22,15 +23,28 @@ function App() {
 
   return (
     <GlobalContext.Provider
-      value={{ createModel, setCreateModel, macs, setMacs, create, setCreate, loading, setLoading }}
+      value={{
+        createModel,
+        setCreateModel,
+        macs,
+        setMacs,
+        create,
+        setCreate,
+        loading,
+        setLoading,
+        deviceModel,
+        setDeviceModel,
+      }}
     >
       <Headers />
       {loading ? <LoadingThreeDots /> : ""}
       {createModel ? (
         <>
-          <SearchBar value={{ create, setCreate, createModel, setCreateModel }} />
-          <CreateDeviceModel />
-
+          <SearchBar
+            value={{ create, setCreate, createModel, setCreateModel }}
+          />
+          <CreateDeviceModel deviceModel={deviceModel}
+                setDeviceModel={setDeviceModel} />
         </>
       ) : (
         <>
@@ -42,8 +56,9 @@ function App() {
                 setMacs={setMacs}
                 create={create}
                 setCreate={setCreate}
+                deviceModel={deviceModel}
+                setDeviceModel={setDeviceModel}
               />
-
             </>
           ) : false ? (
             <LoadingData />

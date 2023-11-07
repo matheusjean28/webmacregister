@@ -1,7 +1,14 @@
 import { useState } from "react";
 import "./ContentsStyles/CreateMacStyles.css";
 
-export default function CreateMac({ macs, setMacs, create, setCreate }) {
+export default function CreateMac({
+  deviceModel,
+  setDeviceModel,
+  macs,
+  setMacs,
+  create,
+  setCreate,
+}) {
   const [model, setModel] = useState("DM955");
   const [mac, setMac] = useState("");
   const [problem, setProblem] = useState("");
@@ -11,7 +18,7 @@ export default function CreateMac({ macs, setMacs, create, setCreate }) {
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    console.log(macs)
+    console.log(macs);
     const newMacData = {
       model,
       mac,
@@ -20,8 +27,6 @@ export default function CreateMac({ macs, setMacs, create, setCreate }) {
       checkDate,
       remoteAccess,
     };
-    
-
 
     const ArrayUpdatedList = (macs, newMacData) => {
       try {
@@ -30,10 +35,10 @@ export default function CreateMac({ macs, setMacs, create, setCreate }) {
       } catch (error) {
         console.error(error);
       }
-    }
+    };
 
     setMacs(ArrayUpdatedList(macs, newMacData));
-    setCreate(!create)
+    setCreate(!create);
   };
   return (
     <>
@@ -44,6 +49,12 @@ export default function CreateMac({ macs, setMacs, create, setCreate }) {
             name="Model"
             id="Model"
           >
+            {deviceModel.map((e) => (
+              <option key={e.model} value={e.model}>
+                {e.model}
+              </option>
+            ))}
+
             <option value="DM955">DM955</option>
             <option value="DM986 - 414">DM986 - 414</option>
           </select>
