@@ -13,17 +13,19 @@
 
   place-content: center;
   place-items: center;
+  color: #ffffff;
 }
 
 .CreateDeviceModelConteiner::-webkit-scrollbar {
   display: none;
 }
 
-.CreateDeviceModelConteiner input, select {
+.CreateDeviceModelConteiner input,
+select {
   padding: 5px;
   border-radius: 5px;
   border: none;
-  color: whitesmoke;
+  color: rgb(11, 11, 11);
 }
 
 .CreateDeviceMacForm {
@@ -53,15 +55,19 @@
   border-radius: 100%;
 }
 
-
 .CreateButton {
+  padding: 5px;
+  border-radius: 5px;
 
-   padding: 5px;
-   border-radius: 5px;
+  text-align: center;
 
-   text-align: center;
+  margin: 0 20%;
+  margin-top: 15px;
+}
 
-   
-   margin: 0 20%;
-   margin-top: 15px;
+.colorRed {
+  color: white !important;
+  border: rgba(255, 0, 0, 0.52) 2px solid !important;
+  font-weight: bolder;
+  background-color: #a00000;
 }

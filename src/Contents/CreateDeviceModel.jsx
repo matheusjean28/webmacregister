@@ -9,7 +9,13 @@ export default function CreateDeviceModel() {
   const [model, setModel] = useState("");
   const [owner, setOwner] = useState("");
   const [mode, setMode] = useState("");
-console.log(deviceModel)
+
+  const [modelInput, setModelInput] = useState(false);
+  const [ownerInput, setOwnerInput] = useState(false);
+
+
+
+
   const handleCloseButton = (e) => {
     e.preventDefault();
     setCreateModel(false);
@@ -17,19 +23,33 @@ console.log(deviceModel)
 
   const handleCreateDevice = (e) => {
     e.preventDefault();
-    const device = {
-      model,
-      owner,
-      mode,
-    };
 
-    var newList = deviceModel;
-    newList.push(device);
-    setDeviceModel(newList)
+    const isModelValid = model.length >= 6 && model.length <= 30;
+    const isOwnerValid = owner.length >= 6 && owner.length <= 30;
 
-    setModel("");
-    setOwner("");
-    setMode("");
+    setModelInput(!isModelValid);
+    setOwnerInput(!isOwnerValid);
+
+    if (isModelValid && isOwnerValid) {
+      const device = {
+        model,
+        owner,
+        mode,
+      };
+
+      var newList = deviceModel;
+      newList.push(device);
+      setDeviceModel(newList);
+
+      setModel("");
+      setOwner("");
+      setMode("");
+    }
+
+    setTimeout(() => {
+      setModelInput(false);
+      setOwnerInput(false);
+    }, 10000);
   };
 
   return (
@@ -44,23 +64,33 @@ console.log(deviceModel)
         </h4>
 
         <input
+          //verify styles
+          //format before push
+          className={modelInput ? "colorRed" : ""}
+          maxLength={30}
           type="text"
           placeholder="Device Model"
           value={model}
-          onChange={(e) => setModel(e.target.value)}
+          onChange={(e) => {
+            setModel(e.target.value.toUpperCase());
+          }}
         />
+
         <input
+          className={ownerInput ? "colorRed" : ""}
           type="text"
           placeholder="Owner"
           value={owner}
-          onChange={(e) => setOwner(e.target.value)}
+          onChange={(e) => {
+            setOwner(e.target.value.toUpperCase());
+          }}
         />
 
         <select
           name="Mode"
           id="Mode"
           value={mode}
-          onChange={(e) => setMode(e.target.value)}
+          onChange={(e) => setMode(e.target.value.toUpperCase())}
         >
           <option value="Router">Router</option>
           <option value="Bridge">Bridge</option>
