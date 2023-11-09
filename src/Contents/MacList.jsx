@@ -1,6 +1,7 @@
 import "./ContentsStyles/MacListStyles.css";
 import CreateMac from "./CreateMac.jsx";
 import { useContext } from "react";
+import InteractiveLI from "./InteractiveLI.jsx";
 import { GlobalContext } from "../Context/GlobalContext";
 
 export default function MacList({macs}) {
@@ -33,7 +34,7 @@ export default function MacList({macs}) {
           ) : (
             Array.from(macs).reverse().map(
               ({ id, mac, model, problem, remoteAccess }) => (
-                <li key={id} className="MacListLi">
+                <li onClick={e => {alert("InteractiveLI")}} key={id} className="MacListLi">
                   <p>{model}</p>
                   <p>{mac}</p>
                   <p>{problem.toString()}</p>
@@ -45,6 +46,8 @@ export default function MacList({macs}) {
               )
             )
           )}
+
+          <InteractiveLI/>
         </ul>
       </>
     );
