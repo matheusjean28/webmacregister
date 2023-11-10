@@ -1,13 +1,14 @@
-import './ContentsStyles/InteractiveLIStyles.css'
-export default function InteractiveLI(){
-    return (
-        <>
-        <div className="InteractiveLIConteiner">
+import "./ContentsStyles/InteractiveLIStyles.css";
+import { GlobalContext } from "../Context/GlobalContext";
+import { useCallback } from "react";
 
-        <p>InteractiveLI.jsx</p>
-        </div>
-        </>
-        
-    )
-    
+export default function InteractiveLI({selectLiId,macs}) {
+    console.log(macs[selectLiId])
+  return (
+    <>
+      <div className="InteractiveLIConteiner">
+        <h3>{selectLiId}</h3>
+      </div>
+    </>
+  );
 }
