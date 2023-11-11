@@ -18,7 +18,6 @@ export default function CreateMac({
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    console.log(macs);
     const newMacData = {
       model,
       mac,
