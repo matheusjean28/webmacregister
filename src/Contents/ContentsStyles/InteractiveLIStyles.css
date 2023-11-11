@@ -1,16 +1,48 @@
 .InteractiveLIConteiner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  
-    background-color: aliceblue;
-    height: 440px;
-    width: 50%;
-    border-radius: 5px;
-    
-    backdrop-filter: blur(100px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 
-    color: red;
-  }
+  background-color: aliceblue;
+  height: 440px;
+  width: 50%;
+  border-radius: 5px;
+
+  backdrop-filter: blur(100px);
+
+  color: black;
+
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+}
+
+.conteinerInfo {
+  place-content: center;
+  display: grid;
+  padding: 25px;
+  border-top: 1px solid gray;
+
+  grid-template-columns: repeat(4, 20%);
+  grid-template-rows: repeat(3, 50px);
+
+  height: 70%;
+  width: 70%;
+  align-items: center;
+  gap: 60px 25px;
   
+}
+
+.InteractiveListH6,
+.InteractiveListH5,
+.InteractiveListIMG {
+  height: 50px;
+  display: flex;
+  place-items: center;
+  text-align: left;
+}
+
+.InteractiveListIMG {
+  height: 40px;
+}
