@@ -9,18 +9,45 @@ export default function CreateMac({
   create,
   setCreate,
 }) {
-  const [model, setModel] = useState("DM955");
+  const [model, setModel] = useState("");
   const [mac, setMac] = useState("");
   const [problem, setProblem] = useState("");
   const [signalRX, setSignalRX] = useState("");
   const [checkDate, setCheckDate] = useState("");
   const [remoteAccess, setRemoteAccess] = useState(false);
 
+  const isValidMac = (mac) => {
+    if(mac.length > 0 && mac.length <= 15){
+      console.log(true)
+      return true
+    }else {
+      console.log(false)
+      return false
+    }
+  };
+
+  const isValidProblem = (problem) => {
+    if(problem.length > 0){
+      return true
+    } else {
+      return false
+    }
+  };
+
+  const isValidSignalRX = (signalRX) => {
+    return !isNaN(signalRX);
+  };
+  
   const handleSubmitForm = (e) => {
     e.preventDefault();
+
+    if (!isValidMac(mac) || !isValidProblem(problem) || !isValidSignalRX(signalRX)) {
+      console.log("Please check fields and try again.");
+      return;
+    }
+
     const newMacData = {
       model,
-      mac,
       problem,
       signalRX,
       checkDate,
@@ -39,6 +66,8 @@ export default function CreateMac({
     setMacs(ArrayUpdatedList(macs, newMacData));
     setCreate(!create);
   };
+
+
   return (
     <>
       <div className="CreateMacConteiner">
@@ -53,7 +82,6 @@ export default function CreateMac({
                 {e.model}
               </option>
             ))}
-
             <option value="DM955">DM955</option>
             <option value="DM986 - 414">DM986 - 414</option>
           </select>
