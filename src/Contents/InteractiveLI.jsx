@@ -1,9 +1,9 @@
 import "./ContentsStyles/InteractiveLIStyles.css";
 
 export default function InteractiveLI({ selectLiId, macs }) {
-  console.log(selectLiId);
-  console.log(macs[selectLiId]);
 
+  const {checkDate, mac,model,problem,remoteAccess,signalRX} = macs[selectLiId]
+  console.log(checkDate, mac,model,problem,remoteAccess,signalRX)
   return (
     <>
       <div className="InteractiveLIConteiner">
