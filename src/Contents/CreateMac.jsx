@@ -45,14 +45,23 @@ export default function CreateMac({
       console.log("Please check fields and try again.");
       return;
     }
-
+    console.log("Model:", model);
+    console.log("Mac:", mac);
+    console.log("Problem:", problem);
+    console.log("SignalRX:", signalRX);
+    console.log("CheckDate:", checkDate);
+    console.log("RemoteAccess:", remoteAccess);
+  
+    
     const newMacData = {
+      mac,
       model,
       problem,
       signalRX,
       checkDate,
       remoteAccess,
     };
+    console.log(newMacData)
 
     const ArrayUpdatedList = (macs, newMacData) => {
       try {
