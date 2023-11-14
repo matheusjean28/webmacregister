@@ -11,21 +11,18 @@ export default function InteractiveLI({ selectLiId, macs }) {
         <h3>Device Informations</h3>
         <div className="conteinerInfo">
           <h5 className="InteractiveListH5">Model</h5>
-          <h6 className="InteractiveListH6">{macs[selectLiId].model}</h6>
+          <h6 className="InteractiveListH6">{model}</h6>
 
           <h5 className="InteractiveListH5">MAC</h5>
           <h6 className="InteractiveListH6">{mac}</h6>
 
           <h5 className="InteractiveListH5">PROBLEM</h5>
-          <h6 className="InteractiveListH6">Dont get Connection</h6>
+          <h6 className="InteractiveListH6">{problem}</h6>
 
           <h5 className="InteractiveListH5">Remote Acess</h5>
           <img
             className="InteractiveListIMG"
-            src={
-              // macs[selectLiId].remoteacess
-              false ? "public/not.png" : "public/sim.png"
-            }
+            src={remoteAccess ? "public/not.png" : "public/sim.png"}
           />
         </div>
       </div>
