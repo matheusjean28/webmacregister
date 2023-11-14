@@ -9,17 +9,21 @@ export default function MacList({ macs }) {
 
   const [showInteractiveLI, setShowInteractiveLI] = useState(false);
   const [selectLiId, setSelectLiId] = useState(Number);
+  const [isInteractiveOpen, setIsInteractiveOpen] = useState(false);
 
-  const handleInteractiveLI = (e) => {
+
+  const handleInteractiveLI = (e,mac) => {
+    console.log("valor mac",mac)
     e.preventDefault();
     setShowInteractiveLI(!showInteractiveLI);
+    setSelectLiId(mac);
   };
 
-  const handleCreate = (e, index) => {
+  const handleCreate = (e, mac) => {
     e.preventDefault();
-    console.log("index dentro da fun:", index);
     setCreate(!create);
-    setSelectLiId(index);
+    setSelectLiId(mac);
+    setIsInteractiveOpen(false);
   };
 
   if (macs.length === 0) {
@@ -47,20 +51,19 @@ export default function MacList({ macs }) {
             <CreateMac />
           ) : (
             Array.from(macs)
-              .reverse()
-              .map(({ id, mac, model, problem, remoteAccess }, index) => (
+              .map(({ checkDate, mac, model, problem, remoteAccess }, index) => (
                 <li
-                  onClick={(e, index) => {
-                    console.log("valor do index ao clicar", index);
+                  onClick={(e) => {
+                    console.log("valor do mac ao clicar", mac);
                     handleInteractiveLI(e, index);
                   }}
-                  key={index}
+                  key={mac}
                   className="MacListLi "
                 >
                   <p>{model}</p>
                   <p>{mac}</p>
                   <p>{problem.toString()}</p>
-                  <p>{index}</p>
+                  <p>{mac}</p>
                   <p>-25.00 </p>
                   <p>22 July </p>
                   <p>{remoteAccess.toString()} </p>
