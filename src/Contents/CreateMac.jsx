@@ -82,7 +82,9 @@ export default function CreateMac({
       <div className="CreateMacConteiner">
         <form id="MacForm" className="MacForm" action="#" method="post">
           <select
-            onChange={(e) => setModel(e.target.value)}
+            onChange={(e) => {
+              console.log("Selected Model:", e.target.value);
+            }}
             name="Model"
             id="Model"
           >
