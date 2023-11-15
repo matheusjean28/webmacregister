@@ -18,11 +18,17 @@ export default function CreateMac({
 
   const isValidMac = (mac) => {
     if (mac.length > 0 && mac.length <= 15) {
-      console.log(true);
       return true;
     } else {
-      console.log(false);
       return false;
+    }
+  };
+
+  const isValidModel = ( model) => {
+    if(model.length > 0){
+      return true
+    } else {
+      return false
     }
   };
 
@@ -44,17 +50,12 @@ export default function CreateMac({
     if (
       !isValidMac(mac) ||
       !isValidProblem(problem) ||
-      !isValidSignalRX(signalRX)
+      !isValidSignalRX(signalRX) ||
+      !isValidModel(model)
     ) {
-      console.log("Please check fields and try again.");
+      alert("All fields must be completed!")
       return;
     }
-    console.log("Model:", model);
-    console.log("Mac:", mac);
-    console.log("Problem:", problem);
-    console.log("SignalRX:", signalRX);
-    console.log("CheckDate:", checkDate);
-    console.log("RemoteAccess:", remoteAccess);
 
     const newMacData = {
       mac,
@@ -64,7 +65,6 @@ export default function CreateMac({
       checkDate,
       remoteAccess,
     };
-    console.log(newMacData);
 
     const ArrayUpdatedList = (macs, newMacData) => {
       try {
@@ -86,7 +86,6 @@ export default function CreateMac({
           <select
             onChange={(e) => {
               setModel(e.target.value)
-              console.log("Selected Model:", e.target.value);
             }}
             name="Model"
             id="Model"
