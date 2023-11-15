@@ -1,29 +1,36 @@
-function FiltredArray (array, value) {
-    
-    var FiltredArrayItems = array.filter(value,(element ) => {
-        if(element == value){
-            console.log(value)
+function FiltredArray(array, value) {
+    var filteredArrayWithIndex = array.reduce((accumulator, element, index) => {
+        if (String(element).includes(value)) {
+            accumulator.push({ index: index, item: element });
         }
-    })
-    return FiltredArrayItems
+        return accumulator;
+    }, []);
+
+    return filteredArrayWithIndex;
 }
 
 function FilterType(value, array) {
     switch (value) {
     case "Model":
         FiltredArray (array, value)
+        console.log("Model")
+
       break;
 
     case "Cliente":
         FiltredArray (array, value)
+        "Cliente"
       break;
 
     case "Problem":
         FiltredArray (array, value)
+        console.log("Problem")
       break;
 
     case "Already Used":
         FiltredArray (array, value)
+        console.log("Already Used")
+
       break;
 
     default:
@@ -31,3 +38,6 @@ function FilterType(value, array) {
       break;
   }
 }
+
+
+export default {FilterType};

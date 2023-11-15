@@ -1,9 +1,10 @@
 import "./ContentsStyles/SearchBar.css";
 import { useContext } from "react";
 import { GlobalContext } from "../Context/GlobalContext";
+import FIlterSearchFuncions from '../Context/FIlterSearchFuncions'
 
 export default function SearchBar() {
-  var { create, setCreate, createModel, setCreateModel } = useContext(GlobalContext);
+  var {macs ,create, setCreate, createModel, setCreateModel } = useContext(GlobalContext);
   const handleCreate = (e) => {
     e.preventDefault();
     if (createModel) {
@@ -23,7 +24,9 @@ export default function SearchBar() {
   return (
     <>
       <div className="SearchBarConteiner">
-        <select name="#" id="Categ">
+        <select name="#" id="Categ" onChange={(e => 
+            FIlterSearchFuncions.FilterType(e.value, macs)
+          )}>
           <option value="Model">Model</option>
           <option value="Client">Client</option>
           <option value="Problem">Problem</option>
