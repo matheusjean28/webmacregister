@@ -17,31 +17,35 @@ export default function CreateMac({
   const [remoteAccess, setRemoteAccess] = useState(false);
 
   const isValidMac = (mac) => {
-    if(mac.length > 0 && mac.length <= 15){
-      console.log(true)
-      return true
-    }else {
-      console.log(false)
-      return false
+    if (mac.length > 0 && mac.length <= 15) {
+      console.log(true);
+      return true;
+    } else {
+      console.log(false);
+      return false;
     }
   };
 
   const isValidProblem = (problem) => {
-    if(problem.length > 0){
-      return true
+    if (problem.length > 0) {
+      return true;
     } else {
-      return false
+      return false;
     }
   };
 
   const isValidSignalRX = (signalRX) => {
     return !isNaN(signalRX);
   };
-  
+
   const handleSubmitForm = (e) => {
     e.preventDefault();
 
-    if (!isValidMac(mac) || !isValidProblem(problem) || !isValidSignalRX(signalRX)) {
+    if (
+      !isValidMac(mac) ||
+      !isValidProblem(problem) ||
+      !isValidSignalRX(signalRX)
+    ) {
       console.log("Please check fields and try again.");
       return;
     }
@@ -51,8 +55,7 @@ export default function CreateMac({
     console.log("SignalRX:", signalRX);
     console.log("CheckDate:", checkDate);
     console.log("RemoteAccess:", remoteAccess);
-  
-    
+
     const newMacData = {
       mac,
       model,
@@ -61,7 +64,7 @@ export default function CreateMac({
       checkDate,
       remoteAccess,
     };
-    console.log(newMacData)
+    console.log(newMacData);
 
     const ArrayUpdatedList = (macs, newMacData) => {
       try {
@@ -76,13 +79,15 @@ export default function CreateMac({
     setCreate(!create);
   };
 
-
   return (
     <>
       <div className="CreateMacConteiner">
         <form id="MacForm" className="MacForm" action="#" method="post">
           <select
-            onChange={(e) => setModel(e.target.value)}
+            onChange={(e) => {
+              setModel(e.target.value)
+              console.log("Selected Model:", e.target.value);
+            }}
             name="Model"
             id="Model"
           >
@@ -94,6 +99,7 @@ export default function CreateMac({
             <option value="DM955">DM955</option>
             <option value="DM986 - 414">DM986 - 414</option>
           </select>
+
           <input
             type="text"
             value={mac}
