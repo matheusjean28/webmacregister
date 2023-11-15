@@ -1,13 +1,13 @@
 Do a Login & Profile interface >> Done
     User Interface ... 
 
-Validate & Create a mac >> Here now
+Validate & Create a mac >> Done
 
 Post to .Csv File
 
 Filter and search items
 
-Edit & view user mac details
+Edit & view user mac details, use interactive li to do this
 
 
 
