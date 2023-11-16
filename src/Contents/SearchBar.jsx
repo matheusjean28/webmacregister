@@ -1,10 +1,13 @@
 import "./ContentsStyles/SearchBar.css";
-import { useContext } from "react";
+import {useState, useContext } from "react";
 import { GlobalContext } from "../Context/GlobalContext";
-import FIlterSearchFuncions from '../Context/FIlterSearchFuncions'
+import FIlterSearchFuncions from "../Context/FIlterSearchFuncions";
 
 export default function SearchBar() {
-  var {macs ,create, setCreate, createModel, setCreateModel } = useContext(GlobalContext);
+  const [find, setFind] = useState("");
+
+  var { macs, create, setCreate, createModel, setCreateModel } =
+    useContext(GlobalContext);
   const handleCreate = (e) => {
     e.preventDefault();
     if (createModel) {
@@ -13,28 +16,46 @@ export default function SearchBar() {
     setCreate(!create);
   };
 
-
   const handleCreateModel = (e) => {
     e.preventDefault();
     if (create) {
       setCreate(false);
     }
-    setCreateModel(!createModel)
+    setCreateModel(!createModel);
   };
   return (
     <>
       <div className="SearchBarConteiner">
-        <select name="#" id="Categ" onChange={(e => 
-            FIlterSearchFuncions.FilterType(e.value, macs)
-          )}>
+        <select
+          name="#"
+          id="Categ"
+          onChange={(e) => {
+            FIlterSearchFuncions.FilterType(e.target.value, macs);
+            console.log("change");
+          }}
+        >
           <option value="Model">Model</option>
           <option value="Client">Client</option>
           <option value="Problem">Problem</option>
           <option value="Already Used">Already Used</option>
         </select>
 
-        <input id="SearchBarTextInput" type="text" placeholder="Input Mac" />
-        <button id="SubmitSearchButton" className="SubmitSearch" type="submit">
+        <input
+          id="SearchBarTextInput"
+          type="text"
+          placeholder="Search Something"
+
+          onChange={(e) => {
+            setFind(e.target.value)
+            console.log("Loking for:", find)
+          }}
+        />
+        <button id="SubmitSearchButton" className="SubmitSearch" type="submit"
+        onClick={() => {
+          FIlterSearchFuncions.FiltredArray(macs, find)
+          console.log(macs, find)
+        }}
+        >
           Search
         </button>
         <button
