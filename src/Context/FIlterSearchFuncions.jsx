@@ -1,12 +1,19 @@
 function FiltredArray(array, value) {
-  var filteredArrayWithIndex = array.reduce((accumulator, element, index) => {
-    if (String(element).includes(value)) {
-      accumulator.push({ index: index, item: element });
+  if (!Array.isArray(array)) {
+    console.error('Invalid input: Array expected');
+    return [];
+  }
+
+  const filtredArrayWithIndex = array.reduce((accumulator, element, index) => {
+    for (const key in element) {
+      if (String(element[key]).includes(value)) {
+        accumulator.push({ index, item: element });
+      }
     }
     return accumulator;
   }, []);
-  console.log("call here", filteredArrayWithIndex)
-  return filteredArrayWithIndex;
+
+    return filtredArrayWithIndex;
 }
 
 function FilterType(value, array) {

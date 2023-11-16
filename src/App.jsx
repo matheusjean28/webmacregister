@@ -16,6 +16,8 @@ function App() {
   const [create, setCreate] = useState(false);
   const [createModel, setCreateModel] = useState(false);
   const [deviceModel, setDeviceModel] = useState([]);
+  const [isSearching, setISearching] = useState(false);
+  const [searchResult, setSearchResult] = useState([]);
 
   useEffect(() => {
     LocalStorageAndFuncs.CheckLocalStorageOrFetch(setMacs, loading, setLoading);
@@ -34,6 +36,10 @@ function App() {
         setLoading,
         deviceModel,
         setDeviceModel,
+        isSearching,
+        setISearching,
+        searchResult,
+        setSearchResult,
       }}
     >
       <Headers />
@@ -43,8 +49,10 @@ function App() {
           <SearchBar
             value={{ create, setCreate, createModel, setCreateModel }}
           />
-          <CreateDeviceModel deviceModel={deviceModel}
-                setDeviceModel={setDeviceModel} />
+          <CreateDeviceModel
+            deviceModel={deviceModel}
+            setDeviceModel={setDeviceModel}
+          />
         </>
       ) : (
         <>

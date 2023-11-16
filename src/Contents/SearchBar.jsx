@@ -1,12 +1,13 @@
 import "./ContentsStyles/SearchBar.css";
 import {useState, useContext } from "react";
 import { GlobalContext } from "../Context/GlobalContext";
-import FIlterSearchFuncions from "../Context/FIlterSearchFuncions";
+import FilterSearchFuncions from "../Context/FilterSearchFuncions";
 
 export default function SearchBar() {
   const [find, setFind] = useState("");
 
-  var { macs, create, setCreate, createModel, setCreateModel } =
+
+  var {searchResult, setSearchResult,isSearching, setISearching, macs, create, setCreate, createModel, setCreateModel } =
     useContext(GlobalContext);
   const handleCreate = (e) => {
     e.preventDefault();
@@ -30,7 +31,7 @@ export default function SearchBar() {
           name="#"
           id="Categ"
           onChange={(e) => {
-            FIlterSearchFuncions.FilterType(e.target.value, macs);
+            FilterSearchFuncions.FilterType(e.target.value, macs);
             console.log("change");
           }}
         >
@@ -47,13 +48,14 @@ export default function SearchBar() {
 
           onChange={(e) => {
             setFind(e.target.value)
-            console.log("Loking for:", find)
+            searchResult, setSearchResult
           }}
         />
         <button id="SubmitSearchButton" className="SubmitSearch" type="submit"
         onClick={() => {
-          FIlterSearchFuncions.FiltredArray(macs, find)
-          console.log(macs, find)
+          const result = FilterSearchFuncions.FiltredArray(macs, find);
+          setSearchResult(result);
+          console.log(result)
         }}
         >
           Search
