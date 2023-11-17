@@ -7,7 +7,7 @@ function FiltredArray(array, value) {
   const filtredArrayWithIndex = array.reduce((accumulator, element, index) => {
     for (const key in element) {
       if (String(element[key]).includes(value)) {
-        accumulator.push({ index, item: element });
+        accumulator.push(element );
       }
     }
     return accumulator;
