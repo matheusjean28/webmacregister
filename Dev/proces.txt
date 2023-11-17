@@ -5,14 +5,17 @@ Validate & Create a mac >> Done
 
 Post to .Csv File
 
-Filter and search items
+Filter and search items >>  
+    -- Remove duplicate keys at accumulator array before return array
 
 Edit & view user mac details, use interactive li to do this
 
+Install and use UUID to generate unique Ids to items until sync at database 
 
 
 
 -- 
+
 atention
     just call localstorage when final array is Done
     otherwise don't do it
