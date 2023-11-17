@@ -70,7 +70,6 @@ export default function MacList({ macs }) {
                 </li>
               ))
           )}
-    {console.log("searchResult",searchResult,"macs", macs)}
           {showInteractiveLI && (
             <InteractiveLI selectLiId={selectLiId} macs={macs} />
           )}

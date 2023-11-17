@@ -3,7 +3,8 @@ function FiltredArray(array, value) {
     console.error('Invalid input: Array expected');
     return [];
   }
-
+  //before finesh, check if has duplicate kays inside accomulator
+  //once have, remove them and return array clean to user
   const filtredArrayWithIndex = array.reduce((accumulator, element, index) => {
     for (const key in element) {
       if (String(element[key]).includes(value)) {

@@ -55,7 +55,6 @@ export default function SearchBar() {
           placeholder="Search Something"
           onChange={(e) => {
             setFind(e.target.value);
-            
           }}
         />
         <button
@@ -65,11 +64,10 @@ export default function SearchBar() {
           onClick={() => {
             const result = FilterSearchFuncions.FiltredArray(macs, find);
             setSearchResult(result);
-            if(find != ""){
-              setISearching(true)
-            }else{
-              setISearching(false)
-
+            if (find) {
+              setISearching(true);
+            } else {
+              setISearching(false);
             }
           }}
         >
