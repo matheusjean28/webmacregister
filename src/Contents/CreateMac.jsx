@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./ContentsStyles/CreateMacStyles.css";
+import { v4 as uuidv4 } from "uuid";
 
 export default function CreateMac({
   deviceModel,
@@ -18,10 +19,8 @@ export default function CreateMac({
 
   const isValidMac = (mac) => {
     if (mac.length > 0 && mac.length <= 15) {
-      console.log(true);
       return true;
     } else {
-      console.log(false);
       return false;
     }
   };
@@ -46,17 +45,11 @@ export default function CreateMac({
       !isValidProblem(problem) ||
       !isValidSignalRX(signalRX)
     ) {
-      console.log("Please check fields and try again.");
       return;
     }
-    console.log("Model:", model);
-    console.log("Mac:", mac);
-    console.log("Problem:", problem);
-    console.log("SignalRX:", signalRX);
-    console.log("CheckDate:", checkDate);
-    console.log("RemoteAccess:", remoteAccess);
 
     const newMacData = {
+      id: uuidv4(),
       mac,
       model,
       problem,
@@ -64,18 +57,8 @@ export default function CreateMac({
       checkDate,
       remoteAccess,
     };
-    console.log(newMacData);
 
-    const ArrayUpdatedList = (macs, newMacData) => {
-      try {
-        const updatedMacs = [...macs, newMacData];
-        return updatedMacs;
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    setMacs(ArrayUpdatedList(macs, newMacData));
+    setMacs((prevMacs) => [...prevMacs, newMacData]);
     setCreate(!create);
   };
 
@@ -85,8 +68,7 @@ export default function CreateMac({
         <form id="MacForm" className="MacForm" action="#" method="post">
           <select
             onChange={(e) => {
-              setModel(e.target.value)
-              console.log("Selected Model:", e.target.value);
+              setModel(e.target.value);
             }}
             name="Model"
             id="Model"
