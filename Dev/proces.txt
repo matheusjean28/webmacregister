@@ -10,7 +10,10 @@ Filter and search items >>
 
 Edit & view user mac details, use interactive li to do this
 
-Install and use UUID to generate unique Ids to items until sync at database 
+Install and use UUID to generate unique Ids to items until sync at database  >> 
+    -- UUID installed
+
+Solve: When click at item, display rigth box at window
 
 
 
