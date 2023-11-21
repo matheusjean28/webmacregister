@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./ContentsStyles/CreateMacStyles.css";
+import { v4 as uuidv4 } from "uuid";
 
 export default function CreateMac({
   deviceModel,
@@ -53,11 +54,11 @@ export default function CreateMac({
       !isValidSignalRX(signalRX) ||
       !isValidModel(model)
     ) {
-      alert("All fields must be completed!")
       return;
     }
 
     const newMacData = {
+      id: uuidv4(),
       mac,
       model,
       problem,
@@ -66,16 +67,7 @@ export default function CreateMac({
       remoteAccess,
     };
 
-    const ArrayUpdatedList = (macs, newMacData) => {
-      try {
-        const updatedMacs = [...macs, newMacData];
-        return updatedMacs;
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    setMacs(ArrayUpdatedList(macs, newMacData));
+    setMacs((prevMacs) => [...prevMacs, newMacData]);
     setCreate(!create);
   };
 
@@ -85,7 +77,7 @@ export default function CreateMac({
         <form id="MacForm" className="MacForm" action="#" method="post">
           <select
             onChange={(e) => {
-              setModel(e.target.value)
+              setModel(e.target.value);
             }}
             name="Model"
             id="Model"
