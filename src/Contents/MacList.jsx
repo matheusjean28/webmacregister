@@ -50,13 +50,13 @@ export default function MacList({ macs }) {
             <CreateMac />
           ) : (
             Array.from(macs).map(
-              ({ checkDate, mac, model, problem, remoteAccess }, index) => (
+              ({ id, checkDate, mac, model, problem, remoteAccess }, index) => (
                 <li
                   onClick={(e) => {
                     console.log("valor do mac ao clicar", mac);
                     handleInteractiveLI(e, index);
                   }}
-                  key={mac}
+                  key={id}
                   className="MacListLi "
                 >
                   <p>{model}</p>

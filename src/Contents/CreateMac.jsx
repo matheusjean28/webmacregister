@@ -25,14 +25,6 @@ export default function CreateMac({
     }
   };
 
-  const isValidModel = ( model) => {
-    if(model.length > 0){
-      return true
-    } else {
-      return false
-    }
-  };
-
   const isValidProblem = (problem) => {
     if (problem.length > 0) {
       return true;
@@ -51,8 +43,7 @@ export default function CreateMac({
     if (
       !isValidMac(mac) ||
       !isValidProblem(problem) ||
-      !isValidSignalRX(signalRX) ||
-      !isValidModel(model)
+      !isValidSignalRX(signalRX)
     ) {
       return;
     }

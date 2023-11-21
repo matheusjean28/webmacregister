@@ -22,7 +22,7 @@ export default function InteractiveLI({ selectLiId, macs }) {
           <h5 className="InteractiveListH5">Remote Acess</h5>
           <img
             className="InteractiveListIMG"
-            src={remoteAccess ? "public/not.png" : "public/sim.png"}
+            src={remoteAccess ? "/not.png" : "/sim.png"}
           />
         </div>
       </div>
