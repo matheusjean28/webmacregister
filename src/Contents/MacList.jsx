@@ -11,9 +11,8 @@ export default function MacList({ macs }) {
   const [selectLiId, setSelectLiId] = useState(Number);
   const [isInteractiveOpen, setIsInteractiveOpen] = useState(false);
 
-
-  const handleInteractiveLI = (e,mac) => {
-    console.log("valor mac",mac)
+  const handleInteractiveLI = (e, mac) => {
+    console.log("valor mac", mac);
     e.preventDefault();
     setShowInteractiveLI(!showInteractiveLI);
     setSelectLiId(mac);
@@ -50,14 +49,14 @@ export default function MacList({ macs }) {
           {create ? (
             <CreateMac />
           ) : (
-            Array.from(macs)
-              .map(({ id, checkDate, mac, model, problem, remoteAccess }, index) => (
+            Array.from(macs).map(
+              ({ checkDate, mac, model, problem, remoteAccess }, index) => (
                 <li
                   onClick={(e) => {
                     console.log("valor do mac ao clicar", mac);
-                    handleInteractiveLI(e, id);
+                    handleInteractiveLI(e, index);
                   }}
-                  key={id}
+                  key={mac}
                   className="MacListLi "
                 >
                   <p>{model}</p>
@@ -68,7 +67,8 @@ export default function MacList({ macs }) {
                   <p>22 July </p>
                   <p>{remoteAccess.toString()} </p>
                 </li>
-              ))
+              )
+            )
           )}
 
           {showInteractiveLI && (
