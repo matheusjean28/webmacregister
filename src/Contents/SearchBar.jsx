@@ -1,9 +1,22 @@
 import "./ContentsStyles/SearchBar.css";
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { GlobalContext } from "../Context/GlobalContext";
+import FilterSearchFuncions from "../Context/FilterSearchFuncions";
 
 export default function SearchBar() {
-  var { create, setCreate, createModel, setCreateModel } = useContext(GlobalContext);
+  const [find, setFind] = useState("");
+
+  var {
+    searchResult,
+    setSearchResult,
+    isSearching,
+    setISearching,
+    macs,
+    create,
+    setCreate,
+    createModel,
+    setCreateModel,
+  } = useContext(GlobalContext);
   const handleCreate = (e) => {
     e.preventDefault();
     if (createModel) {
@@ -12,26 +25,52 @@ export default function SearchBar() {
     setCreate(!create);
   };
 
-
   const handleCreateModel = (e) => {
     e.preventDefault();
     if (create) {
       setCreate(false);
     }
-    setCreateModel(!createModel)
+    setCreateModel(!createModel);
   };
   return (
     <>
       <div className="SearchBarConteiner">
-        <select name="#" id="Categ">
+        <select
+          name="#"
+          id="Categ"
+          onChange={(e) => {
+            FilterSearchFuncions.FilterType(e.target.value, macs);
+            console.log("change");
+          }}
+        >
           <option value="Model">Model</option>
           <option value="Client">Client</option>
           <option value="Problem">Problem</option>
           <option value="Already Used">Already Used</option>
         </select>
 
-        <input id="SearchBarTextInput" type="text" placeholder="Input Mac" />
-        <button id="SubmitSearchButton" className="SubmitSearch" type="submit">
+        <input
+          id="SearchBarTextInput"
+          type="text"
+          placeholder="Search Something"
+          onChange={(e) => {
+            setFind(e.target.value);
+          }}
+        />
+        <button
+          id="SubmitSearchButton"
+          className="SubmitSearch"
+          type="submit"
+          onClick={() => {
+            const result = FilterSearchFuncions.FiltredArray(macs, find);
+            setSearchResult(result);
+            if (find) {
+              setISearching(true);
+            } else {
+              setISearching(false);
+            }
+          }}
+        >
           Search
         </button>
         <button

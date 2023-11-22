@@ -5,7 +5,7 @@ import InteractiveLI from "./InteractiveLI.jsx";
 import { GlobalContext } from "../Context/GlobalContext";
 
 export default function MacList({ macs }) {
-  var { create, setCreate } = useContext(GlobalContext);
+  var { isSearching,searchResult,create, setCreate } = useContext(GlobalContext);
 
   const [showInteractiveLI, setShowInteractiveLI] = useState(false);
   const [selectLiId, setSelectLiId] = useState(Number);
@@ -49,8 +49,8 @@ export default function MacList({ macs }) {
           {create ? (
             <CreateMac />
           ) : (
-            Array.from(macs).map(
-              ({ id, checkDate, mac, model, problem, remoteAccess }, index) => (
+            Array.from(isSearching ? searchResult : macs)
+              .map(({ checkDate, mac, model, problem, remoteAccess }, index) => (
                 <li
                   onClick={(e) => {
                     console.log("valor do mac ao clicar", mac);
@@ -61,16 +61,15 @@ export default function MacList({ macs }) {
                 >
                   <p>{model}</p>
                   <p>{mac}</p>
-                  <p>{problem.toString()}</p>
+                  <p>{problem}</p>
                   <p>{mac}</p>
                   <p>-25.00 </p>
                   <p>22 July </p>
-                  <p>{remoteAccess.toString()} </p>
+                  <p>{remoteAccess} </p>
                 </li>
               )
             )
           )}
-
           {showInteractiveLI && (
             <InteractiveLI selectLiId={selectLiId} macs={macs} />
           )}
