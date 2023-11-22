@@ -50,7 +50,7 @@ export default function MacList({ macs }) {
             <CreateMac />
           ) : (
             Array.from(isSearching ? searchResult : macs)
-              .map(({ checkDate, mac, model, problem, remoteAccess }, index) => (
+              .map(({ id, checkDate, mac, model, problem, remoteAccess }, index) => (
                 <li
                   onClick={(e) => {
                     console.log("valor do mac ao clicar", mac);
