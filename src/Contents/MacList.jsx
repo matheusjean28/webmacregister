@@ -2,6 +2,7 @@ import "./ContentsStyles/MacListStyles.css";
 import CreateMac from "./CreateMac.jsx";
 import { useContext, useState } from "react";
 import InteractiveLI from "./InteractiveLI.jsx";
+import FIlterSearchFuncions from "../Context/FIlterSearchFuncions.jsx";
 import { GlobalContext } from "../Context/GlobalContext";
 
 export default function MacList({ macs }) {
@@ -11,11 +12,16 @@ export default function MacList({ macs }) {
   const [selectLiId, setSelectLiId] = useState(Number);
   const [isInteractiveOpen, setIsInteractiveOpen] = useState(false);
 
-  const handleInteractiveLI = (e, mac) => {
-    console.log("valor mac", mac);
+  const handleInteractiveLI = (e, id) => {
+    // console.log("valor mac", id);
     e.preventDefault();
     setShowInteractiveLI(!showInteractiveLI);
-    setSelectLiId(mac);
+    const selectedItemIndex = FIlterSearchFuncions.GetItemByIdAtList(macs, id);
+    if (selectedItemIndex !== null) {
+      setSelectLiId(selectedItemIndex);
+    } else {
+      // console.error("Item not found");
+    }
   };
 
   const handleCreate = (e, mac) => {
@@ -53,8 +59,8 @@ export default function MacList({ macs }) {
               .map(({ id, checkDate, mac, model, problem, remoteAccess }, index) => (
                 <li
                   onClick={(e) => {
-                    console.log("valor do mac ao clicar", mac);
-                    handleInteractiveLI(e, index);
+                    // console.log("valor do mac ao clicar", mac);
+                    handleInteractiveLI(e, id);
                   }}
                   key={id}
                   className="MacListLi "
@@ -62,10 +68,9 @@ export default function MacList({ macs }) {
                   <p>{model}</p>
                   <p>{mac}</p>
                   <p>{problem}</p>
-                  <p>{mac}</p>
                   <p>-25.00 </p>
                   <p>22 July </p>
-                  <p>{remoteAccess} </p>
+                  <p>{remoteAccess.toString()} </p>
                 </li>
               )
             )

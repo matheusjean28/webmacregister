@@ -1,6 +1,6 @@
 function FiltredArray(array, value) {
   if (!Array.isArray(array)) {
-    console.error('Invalid input: Array expected');
+    // console.error("Invalid input: Array expected");
     return [];
   }
   //before finesh, check if has duplicate kays inside accomulator
@@ -8,20 +8,20 @@ function FiltredArray(array, value) {
   const filtredArrayWithIndex = array.reduce((accumulator, element, index) => {
     for (const key in element) {
       if (String(element[key]).includes(value)) {
-        accumulator.push(element );
+        accumulator.push(element);
       }
     }
     return accumulator;
   }, []);
 
-    return filtredArrayWithIndex;
+  return filtredArrayWithIndex;
 }
 
 function FilterType(value, array) {
   switch (value) {
     case "Model":
       FiltredArray(array, value);
-      console.log("Model");
+      // console.log("Model");
 
       break;
 
@@ -32,12 +32,12 @@ function FilterType(value, array) {
 
     case "Problem":
       FiltredArray(array, value);
-      console.log("Problem");
+      // console.log("Problem");
       break;
 
     case "Already Used":
       FiltredArray(array, value);
-      console.log("Already Used");
+      // console.log("Already Used");
 
       break;
 
@@ -47,4 +47,21 @@ function FilterType(value, array) {
   }
 }
 
-export default { FiltredArray, FilterType };
+function GetItemByIdAtList(array, id) {
+  if (!Array.isArray(array)) {
+    // console.error("Invalid input: Array expected");
+    return null;
+  }
+
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].id === id) {
+      // console.log(i)
+      return i;
+    }
+  }
+
+  // console.error("Item not found");
+  return -1;
+}
+
+export default { FiltredArray, FilterType, GetItemByIdAtList };
