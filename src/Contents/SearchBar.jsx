@@ -1,7 +1,7 @@
 import "./ContentsStyles/SearchBar.css";
 import { useState, useContext } from "react";
 import { GlobalContext } from "../Context/GlobalContext";
-import FilterSearchFuncions from "../Context/FilterSearchFuncions";
+import FilterSearchFuncions from "../Context/FilterSearchFuncions.jsx";
 
 export default function SearchBar() {
   const [find, setFind] = useState("");
@@ -39,8 +39,6 @@ export default function SearchBar() {
           name="#"
           id="Categ"
           onChange={(e) => {
-            FilterSearchFuncions.FilterType(e.target.value, macs);
-            console.log("change");
           }}
         >
           <option value="Model">Model</option>

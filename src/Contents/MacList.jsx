@@ -2,7 +2,7 @@ import "./ContentsStyles/MacListStyles.css";
 import CreateMac from "./CreateMac.jsx";
 import { useContext, useState } from "react";
 import InteractiveLI from "./InteractiveLI.jsx";
-import FIlterSearchFuncions from "../Context/FIlterSearchFuncions.jsx";
+import FilterSearchFuncions from '../Context/FilterSearchFuncions.jsx';
 import { GlobalContext } from "../Context/GlobalContext";
 
 export default function MacList({ macs }) {
@@ -13,14 +13,12 @@ export default function MacList({ macs }) {
   const [isInteractiveOpen, setIsInteractiveOpen] = useState(false);
 
   const handleInteractiveLI = (e, id) => {
-    // console.log("valor mac", id);
     e.preventDefault();
     setShowInteractiveLI(!showInteractiveLI);
-    const selectedItemIndex = FIlterSearchFuncions.GetItemByIdAtList(macs, id);
+    const selectedItemIndex = FilterSearchFuncions.GetItemByIdAtList(macs, id);
     if (selectedItemIndex !== null) {
       setSelectLiId(selectedItemIndex);
     } else {
-      // console.error("Item not found");
     }
   };
 
@@ -59,7 +57,6 @@ export default function MacList({ macs }) {
               .map(({ id, checkDate, mac, model, problem, remoteAccess }, index) => (
                 <li
                   onClick={(e) => {
-                    // console.log("valor do mac ao clicar", mac);
                     handleInteractiveLI(e, id);
                   }}
                   key={id}

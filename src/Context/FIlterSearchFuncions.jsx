@@ -1,6 +1,5 @@
 function FiltredArray(array, value) {
   if (!Array.isArray(array)) {
-    // console.error("Invalid input: Array expected");
     return [];
   }
   //before finesh, check if has duplicate kays inside accomulator
@@ -21,7 +20,6 @@ function FilterType(value, array) {
   switch (value) {
     case "Model":
       FiltredArray(array, value);
-      // console.log("Model");
 
       break;
 
@@ -32,12 +30,10 @@ function FilterType(value, array) {
 
     case "Problem":
       FiltredArray(array, value);
-      // console.log("Problem");
       break;
 
     case "Already Used":
       FiltredArray(array, value);
-      // console.log("Already Used");
 
       break;
 
@@ -49,18 +45,15 @@ function FilterType(value, array) {
 
 function GetItemByIdAtList(array, id) {
   if (!Array.isArray(array)) {
-    // console.error("Invalid input: Array expected");
     return null;
   }
 
   for (let i = 0; i < array.length; i++) {
     if (array[i].id === id) {
-      // console.log(i)
       return i;
     }
   }
 
-  // console.error("Item not found");
   return -1;
 }
 
