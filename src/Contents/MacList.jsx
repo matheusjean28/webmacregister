@@ -2,7 +2,7 @@ import "./ContentsStyles/MacListStyles.css";
 import CreateMac from "./CreateMac.jsx";
 import { useContext, useState } from "react";
 import InteractiveLI from "./InteractiveLI.jsx";
-import FilterSearchFuncions from '../Context/FilterSearchFuncions.jsx';
+import FilterSearchFuncions from '../Context/FIlterSearchFuncions.jsx'
 import { GlobalContext } from "../Context/GlobalContext";
 
 export default function MacList({ macs }) {
