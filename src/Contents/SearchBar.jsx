@@ -1,7 +1,7 @@
 import "./ContentsStyles/SearchBar.css";
 import { useState, useContext } from "react";
 import { GlobalContext } from "../Context/GlobalContext";
-import FilterSearchFuncions from "../Context/FilterSearchFuncions.jsx";
+import FilterSearchFuncions from '../Context/FIlterSearchFuncions'
 
 export default function SearchBar() {
   const [find, setFind] = useState("");
