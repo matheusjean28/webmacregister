@@ -1,10 +1,12 @@
 function LocalStorage(macList) {
   try {
-    const macListJSON = JSON.stringify(macList);
-    localStorage.setItem("macList", macListJSON);
-    console.log("saving macs at database...");
+    if (macList && macList.length !== 0) {
+      const macListJSON = JSON.stringify(macList);
+      localStorage.setItem("macList", macListJSON);
+    }
   } catch (error) {
-    console.error("Something was error at localStorage:", error);
+    console.error("Error while storing macs in localStorage:", error);
+    throw error;
   }
 }
 
@@ -13,14 +15,9 @@ function FetchDataFromAPI(setMacs, loading, SetLoading) {
     .then((response) => response.json())
     .then((dataMacList) => {
       if (dataMacList != null) {
-        console.log(dataMacList, "dentro do fetch");
-
         localStorage.setItem("macList", JSON.stringify(dataMacList));
         setMacs(dataMacList);
         SetLoading(false);
-        console.log(dataMacList);
-
-        console.log("Saving data at localStorage:", dataMacList);
       }
     })
     .catch((error) => {
@@ -30,20 +27,16 @@ function FetchDataFromAPI(setMacs, loading, SetLoading) {
 
 function CheckLocalStorageOrFetch(setMacs, loading, SetLoading) {
   const storedData = localStorage.getItem("macList");
-  console.log(storedData)
   if (storedData) {
     const _parsedData = JSON.parse(storedData);
     setMacs(_parsedData);
   } else {
     FetchDataFromAPI(setMacs, SetLoading);
-    console.log("Theres no data at localStorage, calling API");
     if (SetLoading) {
       SetLoading(true);
     }
   }
 }
-
-
 
 function GetAndUpdateData(setMacs, currentStateMacList) {
   if (Array.isArray(currentStateMacList)) {
@@ -52,8 +45,6 @@ function GetAndUpdateData(setMacs, currentStateMacList) {
     throw new Error("Object passed to this function is not an array type!");
   }
 }
-
-
 
 export default {
   CheckLocalStorageOrFetch,

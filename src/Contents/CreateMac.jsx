@@ -59,6 +59,8 @@ export default function CreateMac({
     };
 
     setMacs((prevMacs) => [...prevMacs, newMacData]);
+    console.log((prevMacs) => [...prevMacs, newMacData]);
+    console.log("saving data at database")
     setCreate(!create);
   };
 

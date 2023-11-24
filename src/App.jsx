@@ -9,6 +9,7 @@ import LocalStorageAndFuncs from "./Context/LocalStorageAndFuncs";
 import CreateMac from "./Contents/CreateMac";
 import LoadingThreeDots from "./Contents/LoadingThreeDots";
 import CreateDeviceModel from "./Contents/CreateDeviceModel";
+import useDataUpdater from './Hooks/useDataUpdater'
 
 function App() {
   const [macs, setMacs] = useState([]);
@@ -22,6 +23,8 @@ function App() {
   useEffect(() => {
     LocalStorageAndFuncs.CheckLocalStorageOrFetch(setMacs, loading, setLoading);
   }, []);
+
+  useDataUpdater(LocalStorageAndFuncs.LocalStorage(macs),1000)
 
   return (
     <GlobalContext.Provider
