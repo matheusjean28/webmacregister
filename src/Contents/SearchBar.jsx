@@ -1,7 +1,8 @@
 import "./ContentsStyles/SearchBar.css";
 import { useState, useContext } from "react";
 import { GlobalContext } from "../Context/GlobalContext";
-import FilterSearchFuncions from '../Context/FIlterSearchFuncions'
+import FilterSearchFuncions from "../Context/FIlterSearchFuncions";
+import { Blend, Search, CirclePlus } from "lucide-react";
 
 export default function SearchBar() {
   const [find, setFind] = useState("");
@@ -15,6 +16,7 @@ export default function SearchBar() {
     create,
     setCreate,
     createModel,
+
     setCreateModel,
   } = useContext(GlobalContext);
   const handleCreate = (e) => {
@@ -35,12 +37,7 @@ export default function SearchBar() {
   return (
     <>
       <div className="SearchBarConteiner">
-        <select
-          name="#"
-          id="Categ"
-          onChange={(e) => {
-          }}
-        >
+        <select id="Categ" onChange={(e) => {}}>
           <option value="Model">Model</option>
           <option value="Client">Client</option>
           <option value="Problem">Problem</option>
@@ -57,7 +54,7 @@ export default function SearchBar() {
         />
         <button
           id="SubmitSearchButton"
-          className="SubmitSearch"
+          className="globalButtonStyle"
           type="submit"
           onClick={() => {
             const result = FilterSearchFuncions.FiltredArray(macs, find);
@@ -70,23 +67,28 @@ export default function SearchBar() {
           }}
         >
           Search
+          <Search size={12} />
         </button>
         <button
+          className="globalButtonStyle"
           id="createMac"
           onClick={(e) => {
             handleCreate(e);
           }}
         >
-          Create
+          Add Device
+          <CirclePlus size={12} />
         </button>
 
         <button
+          className="globalButtonStyle"
           id="createMac"
           onClick={(e) => {
             handleCreateModel(e);
           }}
         >
-          CreateModel
+          Add Model
+          <Blend size={12} />
         </button>
       </div>
     </>

@@ -5,35 +5,48 @@
 }
 
 #Categ {
-  padding: 5px;
+  padding: 8px;
   border-radius: 8px;
   border: none;
+  color: aliceblue;
 }
+
+#Categ:hover {
+  color: aliceblue;
+}
+
+
 
 #SearchBarTextInput {
-  padding: 0 10px;
+  padding: 0 8px;
   border-radius: 8px;
   border: none;
 }
-#SearchBarTextInput:hover{
-  transition: ease-in-out .3s;
 
-    background-color: rgb(252, 254, 255);
-  }
-  
-#SubmitSearchButton {
-  border: 1px solid gray;
-  transition: ease-in-out .3s;
-  border-radius: 8px;
-  padding: 0 10px;
+#SearchBarTextInput:hover {
+  transition: ease-in-out 0.3s;
+
+  background-color: rgb(252, 254, 255);
+  box-sizing: inherit 1px 1px 11px black;
+  color: black;
 }
 
- 
-#SubmitSearchButton:hover {
-    background-color: whitesmoke;
-    color: darkgray;
-    font-weight: bolder;
-    border: 1px solid black;
-    transition: ease-in-out .1s;
-    transform: translateY(2px);
+/* global button style */
+.globalButtonStyle{
+  border: 1px solid gray;
+  transition: ease-in-out 0.3s;
+  border-radius: 8px;
+  padding: 0 10px;
+  font-weight: bolder;
+  font-size: 12px;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  gap: 5px;
+}
+.globalButtonStyle:hover {
+  background-color: whitesmoke;
+  color: darkgray;
+  font-weight: bolder;
+  transition: ease-in-out 0.1s;
 }

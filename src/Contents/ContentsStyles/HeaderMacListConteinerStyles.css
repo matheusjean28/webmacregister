@@ -16,6 +16,7 @@
   font-weight: bolder;
 
   margin-top: 15px;
+  margin-bottom: 5px;
 }
 
 .HeaderMacListConteiner p::before{
