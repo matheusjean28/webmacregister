@@ -1,6 +1,7 @@
 import "./ContentsStyles/CreateDeviceModelStyles.css";
 import { GlobalContext } from "../Context/GlobalContext";
 import { useContext, useState } from "react";
+import {X,Router }from   'lucide-react'
 
 export default function CreateDeviceModel() {
   const { deviceModel, setDeviceModel, createModel, setCreateModel } =
@@ -56,17 +57,17 @@ export default function CreateDeviceModel() {
     <div className="CreateDeviceModelConteiner">
       <form className="CreateDeviceMacForm" onSubmit={handleCreateDevice}>
         <button className="close" onClick={handleCloseButton}>
-          x
+          <X size={12}/>
         </button>
 
-        <h4>
+        <h4 className="HeaderCreateDeviceModel">
           CREATE <br /> DEVICE MODEL
         </h4>
 
         <input
           //verify styles
           //format before push
-          className={modelInput ? "colorRed" : ""}
+          className={modelInput ? "colorRed " : "inputColorBase"}
           maxLength={30}
           type="text"
           placeholder="Device Model"
@@ -77,7 +78,7 @@ export default function CreateDeviceModel() {
         />
 
         <input
-          className={ownerInput ? "colorRed" : ""}
+          className={ownerInput ? "colorRed" : "inputColorBase"}
           type="text"
           placeholder="Owner"
           value={owner}
@@ -98,6 +99,7 @@ export default function CreateDeviceModel() {
         </select>
         <button className="CreateButton" type="submit">
           Create
+          <Router color="black" size={18}/>
         </button>
       </form>
     </div>

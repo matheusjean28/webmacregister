@@ -22,29 +22,46 @@
 
 .CreateDeviceModelConteiner input,
 select {
-  padding: 5px;
-  border-radius: 5px;
+  padding: 10px;
+  border-radius: 10px;
   border: none;
-  color: rgb(11, 11, 11);
 }
 
 .CreateDeviceMacForm {
   text-align: center;
   position: relative;
-  display: grid;
+  display: flex;
   flex-direction: column;
 
-  background-color: #1b1b1b;
+  background-color: rgba(128, 128, 128, 0.216);
   padding: 50px;
   border-radius: 10px;
 
   gap: 10px;
+
+  height: 300px;
+  width: 250px;
+
+  box-shadow: 1px  .1px  5px rgb(165, 165, 165);;
 }
 .CreateDeviceMacForm::-webkit-scrollbar {
   display: none;
 }
 
+.HeaderCreateDeviceModel {
+  display: flex;
+  place-content: center;
+  place-items: center;
+}
+
 .close {
+  display: flex;
+  place-content: center;
+  place-items: center;
+
+  width: 30px;
+  height: 30px;
+
   position: absolute;
   top: 10px;
   right: 10px;
@@ -52,22 +69,55 @@ select {
   color: black;
   font-weight: bolder;
 
+  border: none;
+  background: none;
+}
+.close:hover {
+  box-shadow: 0px 0px 5px whitesmoke;
   border-radius: 100%;
 }
 
 .CreateButton {
-  padding: 5px;
-  border-radius: 5px;
+
+  background: none;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  gap: 5px;
+
+  font-weight: bolder;
+  color: rgb(255, 255, 255);
+
+  padding: 10px;
+  border-radius: 10px;
 
   text-align: center;
 
   margin: 0 20%;
   margin-top: 15px;
+
+  border: 1px solid rgb(100, 100, 100);
+  box-shadow: 1px 1px 5px rgb(98, 98, 98);
+}
+
+.CreateButton:hover {
+  transition: ease-in-out 0.2s all;
+  transform: translateY(2px);
+  border: 1px solid rgb(100, 100, 100);
+  box-shadow: 1px 1px 5px rgb(40, 40, 40);
 }
 
 .colorRed {
-  color: white !important;
-  border: rgba(255, 0, 0, 0.52) 2px solid !important;
+  border: rgba(255, 163, 163, 0.52) 2px solid !important;
   font-weight: bolder;
-  background-color: #a00000;
+  background-color: #b60606;
+}
+
+/* get select and change color for then */
+#Mode {
+  color: white;
+}
+
+.inputColorBase:hover {
+  background-color: #000000;
 }
