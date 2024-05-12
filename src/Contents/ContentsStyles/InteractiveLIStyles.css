@@ -1,5 +1,7 @@
 .InteractiveLIConteiner {
+  z-index: 2;
   position: absolute;
+
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -13,36 +15,69 @@
 
   color: black;
 
-  display: flex;
-  flex-direction: column;
-  place-items: center;
-}
-
-.conteinerInfo {
-  place-content: center;
   display: grid;
-  padding: 25px;
-  border-top: 1px solid gray;
-
-  grid-template-columns: repeat(4, 20%);
-  grid-template-rows: repeat(3, 50px);
-
-  height: 70%;
-  width: 70%;
-  align-items: center;
-  gap: 60px 25px;
-  
-}
-
-.InteractiveListH6,
-.InteractiveListH5,
-.InteractiveListIMG {
-  height: 50px;
-  display: flex;
   place-items: center;
-  text-align: left;
+
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
 }
 
-.InteractiveListIMG {
-  height: 40px;
+.DeviceInformationCenter {
+  position: absolute;
+  top: 5px;
+  left: 10px;
+}
+
+.FielSpanConfig {
+  display: flex;
+  gap: 20px;
+  border: 1px solid gray;
+  border-radius: 8px;
+
+  height: 50px;
+  place-content: center;
+  place-items: center;
+
+  padding: 0 10px;
+}
+
+.ShowMoreInfoButton {
+  border: none;
+
+  width: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.RemoteAcessIcon {
+  display: flex;
+  place-content: center;
+  place-items: center;
+  font-weight: bolder;
+}
+/* defines color based on true or false remote acess status */
+.WithoutRemoteAcess {
+  background-color: red;
+}
+.WithRemoteAcess {
+  background-color: green;
+}
+
+.RightConteinerSpan {
+  z-index: 1;
+
+  position: absolute;
+  top: 50%;
+  left: 80%;
+  transform: translate(-50%, -50%);
+
+  display: flex;
+  padding: 0 15px;
+  background-color: rgb(64, 128, 185);
+  height: 440px;
+  width: 10%;
+
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
 }

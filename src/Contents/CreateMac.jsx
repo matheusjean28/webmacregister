@@ -78,7 +78,7 @@ export default function CreateMac({
             {deviceModel.map((e) => (
               <option key={e.model} value={e.model}>
                 {e.model}
-              </option>
+              </option> 
             ))}
             <option value="DM955">DM955</option>
             <option value="DM986 - 414">DM986 - 414</option>

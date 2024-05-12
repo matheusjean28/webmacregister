@@ -8,11 +8,12 @@
   padding: 8px;
   border-radius: 8px;
   border: none;
-  color: aliceblue;
+  color: rgb(0, 0, 0);
+
 }
 
 #Categ:hover {
-  color: aliceblue;
+  color: rgb(0, 0, 0);
 }
 
 
