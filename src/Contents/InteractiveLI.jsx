@@ -40,7 +40,7 @@ export default function InteractiveLI({ selectLiId, macs }) {
         {/* <h4 className="DeviceInformationCenter">Device Information</h4> */}
         <span className="FielSpanConfig">
           <h5>Model:</h5>
-          <h6>{model}</h6>
+          <h6>{toString(model).length() > 0 ? model  : "Empyt"}</h6>
         </span>
 
         <span className="FielSpanConfig">
