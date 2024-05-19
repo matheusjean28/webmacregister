@@ -40,27 +40,24 @@ export default function CreateMac({
   const handleSubmitForm = (e) => {
     e.preventDefault();
 
-    if (
-      !isValidMac(mac) ||
-      !isValidProblem(problem) ||
-      !isValidSignalRX(signalRX)
-    ) {
+    if (!isValidMac(mac) || !isValidSignalRX(signalRX)) {
       return;
     }
+  
 
     const newMacData = {
       id: uuidv4(),
       mac,
       model,
-      problem,
-      signalRX,
+      problem: problem === "" ? "OK" : problem,  
+      signalRX: `${-signalRX}`,
       checkDate,
       remoteAccess,
     };
 
     setMacs((prevMacs) => [...prevMacs, newMacData]);
     console.log((prevMacs) => [...prevMacs, newMacData]);
-    console.log("saving data at database")
+    console.log("saving data at database");
     setCreate(!create);
   };
 
@@ -78,7 +75,7 @@ export default function CreateMac({
             {deviceModel.map((e) => (
               <option key={e.model} value={e.model}>
                 {e.model}
-              </option> 
+              </option>
             ))}
             <option value="DM955">DM955</option>
             <option value="DM986 - 414">DM986 - 414</option>
@@ -87,7 +84,7 @@ export default function CreateMac({
           <input
             type="text"
             value={mac}
-            onChange={(e) => setMac(e.target.value)}
+            onChange={(e) => setMac(e.target.value.toUpperCase())}
             id="Mac"
             placeholder="Mac"
             maxLength={15}
@@ -95,7 +92,9 @@ export default function CreateMac({
           <input
             type="text"
             value={problem}
-            onChange={(e) => setProblem(e.target.value)}
+            onChange={(e) => {
+              setProblem(e.target.value === "" ? "OK" : e.target.value); 
+            }}
             id="Problem"
             placeholder="Problem"
             maxLength={150}

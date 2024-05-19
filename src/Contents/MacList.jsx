@@ -2,14 +2,15 @@ import "./ContentsStyles/MacListStyles.css";
 import CreateMac from "./CreateMac.jsx";
 import { useContext, useState } from "react";
 import InteractiveLI from "./InteractiveLI.jsx";
-import FilterSearchFuncions from '../Context/FIlterSearchFuncions.jsx'
+import FilterSearchFuncions from "../Context/FIlterSearchFuncions.jsx";
 import { GlobalContext } from "../Context/GlobalContext";
 import EmpytMacList from "./MacList/EmpytMacList.jsx";
-import {X, Check} from 'lucide-react'
+import { X, Check } from "lucide-react";
 import RenderEmpytItem from "../Utils/RenderEmpytItem.jsx";
 
 export default function MacList({ macs }) {
-  var { isSearching,searchResult,create, setCreate } = useContext(GlobalContext);
+  var { isSearching, searchResult, create, setCreate } =
+    useContext(GlobalContext);
 
   const [showInteractiveLI, setShowInteractiveLI] = useState(false);
   const [selectLiId, setSelectLiId] = useState(Number);
@@ -25,9 +26,6 @@ export default function MacList({ macs }) {
     }
   };
 
-
- 
-
   const handleCreate = (e, mac) => {
     e.preventDefault();
     setCreate(!create);
@@ -36,38 +34,75 @@ export default function MacList({ macs }) {
   };
 
   if (macs.length === 0) {
-    return (
-      <EmpytMacList />
-    );
+    return <EmpytMacList />;
   } else {
     return (
-      <>
+      <> {showInteractiveLI && (
+        <InteractiveLI selectLiId={selectLiId} macs={macs} />
+      )}
         <ul className="MacListConteiner">
           {create ? (
             <CreateMac />
           ) : (
-            Array.from(isSearching ? searchResult : macs)
-              .map(({ id, checkDate, mac, model, problem, remoteAccess }, index) => (
-                <li
-                  onClick={(e) => {
-                    handleInteractiveLI(e, id);
-                  }}
-                  key={id}
-                  className="MacListLi "
-                >
-                  <p>{RenderEmpytItem(model)}</p>
-                  <p>{RenderEmpytItem(mac)}</p>
-                  <p>{RenderEmpytItem(problem)}</p>
-                  <p>{RenderEmpytItem("-25")} </p>
-                  <p>{RenderEmpytItem(checkDate)} </p>
-                  {remoteAccess ? <p className="remoteAccessTrue">  <Check/> </p> :  <p> <X /> </p> }
-                </li>
-              )
+            Array.from(isSearching ? searchResult : macs).reverse().map(
+              (
+                { id, checkDate, mac, model, problem, remoteAccess, signalRX },
+                index
+              ) =>
+                remoteAccess ? (
+                  <li
+                    onClick={(e) => {
+                      handleInteractiveLI(e, id);
+                    }}
+                    key={id}
+                    className="MacListLi remoteAccessTrue"
+                  >
+                    <p>{RenderEmpytItem(model)}</p>
+                    <p>{RenderEmpytItem(mac)}</p>
+                    <p>{RenderEmpytItem(problem)}</p>
+                    <p>{RenderEmpytItem(signalRX)} </p>
+                    <p>{RenderEmpytItem(checkDate)} </p>
+                    {remoteAccess ? (
+                      <p className="remoteAccessTrue">
+                        {" "}
+                        <Check />{" "}
+                      </p>
+                    ) : (
+                      <p>
+                        {" "}
+                        <X />{" "}
+                      </p>
+                    )}
+                  </li>
+                ) : (
+                  <li
+                    onClick={(e) => {
+                      handleInteractiveLI(e, id);
+                    }}
+                    key={id}
+                    className="MacListLi "
+                  >
+                    <p>{RenderEmpytItem(model)}</p>
+                    <p>{RenderEmpytItem(mac)}</p>
+                    <p>{RenderEmpytItem(problem)}</p>
+                    <p>{RenderEmpytItem(signalRX)} </p>
+                    <p>{RenderEmpytItem(checkDate)} </p>
+                    {remoteAccess ? (
+                      <p className="remoteAccessTrue">
+                        {" "}
+                        <Check />{" "}
+                      </p>
+                    ) : (
+                      <p>
+                        {" "}
+                        <X />{" "}
+                      </p>
+                    )}
+                  </li>
+                )
             )
           )}
-          {showInteractiveLI && (
-            <InteractiveLI selectLiId={selectLiId} macs={macs} />
-          )}
+         
         </ul>
       </>
     );
