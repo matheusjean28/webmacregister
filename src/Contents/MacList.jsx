@@ -4,6 +4,9 @@ import { useContext, useState } from "react";
 import InteractiveLI from "./InteractiveLI.jsx";
 import FilterSearchFuncions from '../Context/FIlterSearchFuncions.jsx'
 import { GlobalContext } from "../Context/GlobalContext";
+import EmpytMacList from "./MacList/EmpytMacList.jsx";
+import {X, Check} from 'lucide-react'
+import RenderEmpytItem from "../Utils/RenderEmpytItem.jsx";
 
 export default function MacList({ macs }) {
   var { isSearching,searchResult,create, setCreate } = useContext(GlobalContext);
@@ -22,6 +25,9 @@ export default function MacList({ macs }) {
     }
   };
 
+
+ 
+
   const handleCreate = (e, mac) => {
     e.preventDefault();
     setCreate(!create);
@@ -31,20 +37,7 @@ export default function MacList({ macs }) {
 
   if (macs.length === 0) {
     return (
-      <>
-        <div className="MacListEmpytList">
-          <img className="notfound" src="/notfound.png" />
-          <h4>YOU DON'T HAVE ANY MACS SAVED YET! </h4>
-          <button
-            onClick={(e) => {
-              handleCreate(e);
-            }}
-            className="MacListEmpytListButton"
-          >
-            Create Mac
-          </button>
-        </div>
-      </>
+      <EmpytMacList />
     );
   } else {
     return (
@@ -62,12 +55,12 @@ export default function MacList({ macs }) {
                   key={id}
                   className="MacListLi "
                 >
-                  <p>{model}</p>
-                  <p>{mac}</p>
-                  <p>{problem}</p>
-                  <p>-25.00 </p>
-                  <p>22 July </p>
-                  <p>{remoteAccess.toString()} </p>
+                  <p>{RenderEmpytItem(model)}</p>
+                  <p>{RenderEmpytItem(mac)}</p>
+                  <p>{RenderEmpytItem(problem)}</p>
+                  <p>{RenderEmpytItem("-25")} </p>
+                  <p>{RenderEmpytItem(checkDate)} </p>
+                  {remoteAccess ? <p className="remoteAccessTrue">  <Check/> </p> :  <p> <X /> </p> }
                 </li>
               )
             )

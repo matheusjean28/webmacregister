@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./ContentsStyles/InteractiveLIStyles.css";
 import { Check, X } from "lucide-react";
 import RigthBar from "./RigthBar/RigthBar";
+import RenderEmpytItem from "../Utils/RenderEmpytItem";
 
 export default function InteractiveLI({ selectLiId, macs }) {
   var { checkDate, mac, model, problem, remoteAccess, signalRX } =
@@ -40,12 +41,12 @@ export default function InteractiveLI({ selectLiId, macs }) {
         {/* <h4 className="DeviceInformationCenter">Device Information</h4> */}
         <span className="FielSpanConfig">
           <h5>Model:</h5>
-          <h6>{toString(model).length() > 0 ? model  : "Empyt"}</h6>
+          <h6>{RenderEmpytItem(model)}</h6>
         </span>
 
         <span className="FielSpanConfig">
           <h5>Mac:</h5>
-          <h6>{mac}</h6>
+          <h6>{RenderEmpytItem(mac)}</h6>
         </span>
 
         <span className="FielSpanConfig">
@@ -57,18 +58,18 @@ export default function InteractiveLI({ selectLiId, macs }) {
             handleLabelRender("problem")
           }}
           >
-            {problem}
+            {RenderEmpytItem(problem)}
           </button>
         </span>
 
         <span className="FielSpanConfig">
           <h5>SignalRX:</h5>
-          <h6>{signalRX}</h6>
+          <h6>{RenderEmpytItem(signalRX)}</h6>
         </span>
 
         <span className="FielSpanConfig">
           <h5>Check Date:</h5>
-          <h6>{checkDate}</h6>
+          <h6>{RenderEmpytItem(checkDate)}</h6>
         </span>
 
         <span className="FielSpanConfig">
