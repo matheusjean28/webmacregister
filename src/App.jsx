@@ -71,7 +71,7 @@ function App() {
                 setDeviceModel={setDeviceModel}
               />
             </>
-          ) : false ? (
+          ) : false ? ( //set as false only for not show element
             <LoadingData />
           ) : (
             <>

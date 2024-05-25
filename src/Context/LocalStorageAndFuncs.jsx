@@ -21,7 +21,7 @@ function FetchDataFromAPI(setMacs, loading, SetLoading) {
       }
     })
     .catch((error) => {
-      console.error("Erro ao obter dados da API:", error);
+      console.error("Error at fetching data:", error);
     });
 }
 

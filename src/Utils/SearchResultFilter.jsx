@@ -6,7 +6,7 @@
  * @param {Function} statesHandle - State handler, UseState-like.
  * @param {Array} parmsFound array that contains data found at search func
  */
-function SearchResultFilter(params = "", array = [], statesHandle = () => {}) {
+function SearchResultFilter(params = "", array = []) {
   console.log("called rigth here!");
 
   try {
@@ -14,22 +14,30 @@ function SearchResultFilter(params = "", array = [], statesHandle = () => {}) {
       throw new Error("Params or Array must have data");
     }
 
-    var ShouldReturnedValidData = [];
-     array.forEach((item, index) => {
+    var ShouldReturnValidData = [];
+    var lowerCaseParam = params.toLowerCase();
+    array.forEach((item, index) => {
       item = Object.values(item);
 
       // check if item is igual to the params searched
+      //Also convert all elements to lowercase and check if any element matches the params
       item.forEach((element) => {
-        if (element === params) {
-          var itemPosition = array[index]
-          ShouldReturnedValidData.push(itemPosition);
-          return ShouldReturnedValidData;
+        var lowerCaseElement = String(element).toLowerCase();
+        if (lowerCaseElement.includes(lowerCaseParam)) {
+          var itemPosition = array[index];
+          if (ShouldReturnValidData.includes(itemPosition)) {
+            return;
+          } else {
+            ShouldReturnValidData.push(itemPosition);
+            return ShouldReturnValidData;
+          }
         }
       });
     });
-    
+
     // missing set state with this data;
-    return ShouldReturnedValidData;
+    console.log(ShouldReturnValidData);
+    return ShouldReturnValidData;
   } catch (error) {
     console.error(error);
   }

@@ -13,6 +13,7 @@ export default function SearchBar() {
     setSearchResult,
     isSearching,
     setISearching,
+    setMacs,
     macs,
     create,
     setCreate,
@@ -36,9 +37,15 @@ export default function SearchBar() {
     setCreateModel(!createModel);
   };
 
-    const handleSearchMac = () => {
-      SearchResultFilter(find,  macs,  )
+  const handleSearchMac = () => {
+    setISearching(true);
+    SearchResultFilter(find, macs);
+    try {
+      setSearchResult(SearchResultFilter(find, macs));
+    } catch (error) {
+      console.error(error);
     }
+  };
 
   return (
     <>
@@ -54,7 +61,11 @@ export default function SearchBar() {
           id="SearchBarTextInput"
           type="text"
           placeholder="Search Something"
+          //when this value is '' result return all list
           onChange={(e) => {
+            if (e.target.value == "") {
+              setISearching(false);
+            }
             setFind(e.target.value);
           }}
         />
@@ -63,7 +74,7 @@ export default function SearchBar() {
           className="globalButtonStyle"
           type="submit"
           onClick={() => {
-            handleSearchMac()
+            handleSearchMac();
           }}
         >
           Search
