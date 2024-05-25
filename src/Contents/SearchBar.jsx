@@ -37,7 +37,7 @@ export default function SearchBar() {
   };
 
     const handleSearchMac = () => {
-      SearchResultFilter(find,  ["something"],  )
+      SearchResultFilter(find,  macs,  )
     }
 
   return (
