@@ -3,6 +3,7 @@ import { useState, useContext } from "react";
 import { GlobalContext } from "../Context/GlobalContext";
 import FilterSearchFuncions from "../Context/FIlterSearchFuncions";
 import { Blend, Search, CirclePlus } from "lucide-react";
+import SearchResultFilter from "../Utils/SearchResultFilter";
 
 export default function SearchBar() {
   const [find, setFind] = useState("");
@@ -34,6 +35,11 @@ export default function SearchBar() {
     }
     setCreateModel(!createModel);
   };
+
+    const handleSearchMac = () => {
+      SearchResultFilter(find,  ["something"],  )
+    }
+
   return (
     <>
       <div className="SearchBarConteiner">
@@ -57,13 +63,7 @@ export default function SearchBar() {
           className="globalButtonStyle"
           type="submit"
           onClick={() => {
-            const result = FilterSearchFuncions.FiltredArray(macs, find);
-            setSearchResult(result);
-            if (find) {
-              setISearching(true);
-            } else {
-              setISearching(false);
-            }
+            handleSearchMac()
           }}
         >
           Search
