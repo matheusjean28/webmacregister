@@ -1,16 +1,18 @@
 import { useState } from "react";
-import "./ContentsStyles/InteractiveLIStyles.css";
-import { Check, X } from "lucide-react";
-import RigthBar from "./RigthBar/RigthBar";
-import RenderEmpytItem from "../Utils/RenderEmpytItem";
+import "../ContentsStyles/InteractiveLIStyles.css";
+import { Check, X, Pencil } from "lucide-react";
+import RigthBar from "../RigthBar/RigthBar";
+import RenderEmpytItem from "../../Utils/RenderEmpytItem";
+import EditInteractiveLI from "./EditInteractiveLI";
 
 export default function InteractiveLI({ selectLiId, macs }) {
   var { checkDate, mac, model, problem, remoteAccess, signalRX } =
     macs[selectLiId];
 
-    const [showRigthBar, SetShowRigthBar] = useState(false)
-    const [labelToRender, SetLabelToRender] = useState("")
-  const clients = [
+  const [isEditingItem, setIsEditingItem] = useState(false);
+  const [showRigthBar, SetShowRigthBar] = useState(false);
+  const [labelToRender, SetLabelToRender] = useState("");
+  var clients = [
     { id: 123, name: "Ana MarioMario da silva ferreirta" },
     { id: 456, name: "Mario" },
     { id: 123, name: "Ana" },
@@ -27,16 +29,20 @@ export default function InteractiveLI({ selectLiId, macs }) {
 
   const handleLabelRender = (label) => {
     try {
-      label == "usedIn" ?  SetLabelToRender({field: "usedIn", data:clients}) : ""
-      label == "problem" ?  SetLabelToRender({field: "problem", data: problem}) : ""
+      label == "usedIn"
+        ? SetLabelToRender({ field: "usedIn", data: clients })
+        : "";
+      label == "problem"
+        ? SetLabelToRender({ field: "problem", data: problem })
+        : "";
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
-  }
-  
-  
+  };
+
   return (
     <>
+
       <div className="InteractiveLIConteiner">
         {/* <h4 className="DeviceInformationCenter">Device Information</h4> */}
         <span className="FielSpanConfig">
@@ -51,12 +57,13 @@ export default function InteractiveLI({ selectLiId, macs }) {
 
         <span className="FielSpanConfig">
           <h5>Problem:</h5>
-          <button className="ShowMoreInfoButton"
-          onClick={(e) => {
-            e.preventDefault()
-            SetShowRigthBar(!showRigthBar)
-            handleLabelRender("problem")
-          }}
+          <button
+            className="ShowMoreInfoButton"
+            onClick={(e) => {
+              e.preventDefault();
+              SetShowRigthBar(!showRigthBar);
+              handleLabelRender("problem");
+            }}
           >
             {RenderEmpytItem(problem)}
           </button>
@@ -75,12 +82,13 @@ export default function InteractiveLI({ selectLiId, macs }) {
         <span className="FielSpanConfig">
           <h5>used In:</h5>
 
-          <button className="ShowMoreInfoButton"
-          onClick={(e) => {
-            e.preventDefault()
-            SetShowRigthBar(!showRigthBar)
-            handleLabelRender("usedIn")
-          }}
+          <button
+            className="ShowMoreInfoButton"
+            onClick={(e) => {
+              e.preventDefault();
+              SetShowRigthBar(!showRigthBar);
+              handleLabelRender("usedIn");
+            }}
           >
             {clients.map((e) => {
               return `\n${e.name}`;
@@ -98,8 +106,27 @@ export default function InteractiveLI({ selectLiId, macs }) {
           <h5>Remote Acess</h5>
           {!remoteAccess ? <X size={15} /> : <Check size={15} />}
         </span>
+
+        {/* set as invisible just to get space */}
+        <span className="FielSpanConfig InvisibleField"></span>
+        <span>
+          <button
+            className="FielSpanConfig ButtonEdit "
+            onClick={(e) => {
+              e.preventDefault();
+              setIsEditingItem(!isEditingItem)
+              console.log(macs[selectLiId]);
+            }}
+          >
+            Edit <Pencil size={15} />
+          </button>
+        </span>
       </div>
-          {showRigthBar ? <RigthBar  labelToRender={labelToRender}/> : ""}
+      {showRigthBar ? <RigthBar labelToRender={labelToRender} /> : ""}
+
+      {/* need array mac complete to push new item  */}
+    {isEditingItem ? <EditInteractiveLI  isEditingItem={isEditingItem} setIsEditingItem={setIsEditingItem}  selectLiId={selectLiId} macs={macs[selectLiId]}/> : ""}
+
     </>
   );
 }

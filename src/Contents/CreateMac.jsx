@@ -25,13 +25,6 @@ export default function CreateMac({
     }
   };
 
-  const isValidProblem = (problem) => {
-    if (problem.length > 0) {
-      return true;
-    } else {
-      return false;
-    }
-  };
 
   const isValidSignalRX = (signalRX) => {
     return !isNaN(signalRX);
@@ -49,14 +42,14 @@ export default function CreateMac({
       id: uuidv4(),
       mac,
       model,
-      problem: problem === "" ? "OK" : problem,  
+      problem: problem === "" ? "OK" : problem,
+      usedAt ,  
       signalRX: `${-signalRX}`,
       checkDate,
       remoteAccess,
     };
 
     setMacs((prevMacs) => [...prevMacs, newMacData]);
-    console.log((prevMacs) => [...prevMacs, newMacData]);
     console.log("saving data at database");
     setCreate(!create);
   };

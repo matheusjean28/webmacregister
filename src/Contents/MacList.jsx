@@ -1,7 +1,7 @@
 import "./ContentsStyles/MacListStyles.css";
 import CreateMac from "./CreateMac.jsx";
 import { useContext, useState } from "react";
-import InteractiveLI from "./InteractiveLI.jsx";
+import InteractiveLI from "./InteractiveLi/InteractiveLI.jsx";
 import FilterSearchFuncions from "../Context/FIlterSearchFuncions.jsx";
 import { GlobalContext } from "../Context/GlobalContext";
 import EmpytMacList from "./MacList/EmpytMacList.jsx";
@@ -44,6 +44,8 @@ export default function MacList({ macs }) {
           {create ? (
             <CreateMac />
           ) : (
+            
+            //searchResult : macs defines betweem result search or data at localstorage
             Array.from(isSearching ? searchResult : macs).reverse().map(
               (
                 { id, checkDate, mac, model, problem, remoteAccess, signalRX },
