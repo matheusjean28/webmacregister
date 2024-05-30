@@ -1,4 +1,5 @@
 .EditInteractiveLIConteiner {
+  padding-top: 50px;
   z-index: 2;
   position: absolute;
 
@@ -6,10 +7,11 @@
   left: 50%;
   transform: translate(-50%, -50%);
 
+  
   background-color: aliceblue;
-  height: 600px;
+  height: 500px;
   width: 60%;
-  border-radius: 5px;
+  border-radius: 8px;
 
   backdrop-filter: blur(100px);
 
@@ -19,15 +21,71 @@
   place-items: center;
 
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 150px);
+}
+.EditItemDivLabel {
+  width: 150px;
+  height: 100px;
+  
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  place-items: left;
+
+  border: 1px solid gray;
+  padding: 10px;
+  border-radius: 8px;
+}
+.cannotBeEdited {
+  border: none;
+  opacity: 90%;
+  border: 1px solid gray;
+
 }
 
+.EditItemInput {
+  color:black;
+  border: none;
+  background-color: aliceblue;
+  border: 1px solid gray;
+  padding: 5px;
+  border-radius: 8px;
+  
+}
 
-.closeEditButton{
-    position: absolute;
-    top: 10px;
-    right: 20px;
-    border: none;
-    background: none;
+.SaveEditedItem{
+  display: flex;
+  height: 40px;
+  width: 100px;
+  place-content: center;
+  place-items: center;
+  gap: 10px;
+  border-radius: 8px;
+}
 
+.RemoteAcessInputCheck{
+  display: flex;
+  height: 50px;
+  border: 1px solid gray;
+
+  width: 150px;
+  gap: 10px;
+  place-content: center;
+  place-items: center;
+  border-radius: 8px;
+
+  padding: 5px;
+
+  
+}
+
+.closeEditButton {
+  gap: 5px;
+
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  border: none;
+  background: none;
 }

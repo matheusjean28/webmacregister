@@ -17,16 +17,16 @@ export default function EditInteractiveLI({ selectLiId, setIsEditingItem }) {
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+    const { name, type, value, checked } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: type === "checkbox" ? checked : value,
+    }));
   };
+
   const handleSave = () => {
     const userConfirmed = window.confirm("Would you like to save changes?");
     if (userConfirmed) {
-      console.log("Data Saved:", formData);
       const updatedMacs = macs.map((mac, index) =>
         index === selectLiId ? formData : mac
       );
@@ -37,69 +37,75 @@ export default function EditInteractiveLI({ selectLiId, setIsEditingItem }) {
 
   return (
     <form className="EditInteractiveLIConteiner">
-      <div>
+      <div className="EditItemDivLabel">
         <label>Check Date:</label>
         <input
+        className="EditItemInput"
           type="text"
           name="checkDate"
           value={formData.checkDate}
           onChange={handleChange}
         />
       </div>
-      <div>
+      <div className="EditItemDivLabel cannotBeEdited">
         <label>MAC:</label>
-        <input
-          type="text"
-          name="mac"
-          value={formData.mac}
-          onChange={handleChange}
-        />
+        <h6>{formData.mac}</h6>
       </div>
-      <div>
+      <div className="EditItemDivLabel cannotBeEdited">
         <label>Model:</label>
-        <input
-          type="text"
-          name="model"
-          value={formData.model}
-          onChange={handleChange}
-        />
+        <h6>{formData.model}</h6>
       </div>
-      <div>
+      <div className="EditItemDivLabel">
         <label>Problem:</label>
-        <input
+        <textarea
+          className="EditItemInput"
           type="text"
           name="problem"
           value={formData.problem}
           onChange={handleChange}
         />
       </div>
-      <div>
-        <label>Remote Access:</label>
-        <input
-          type="text"
-          name="remoteAccess"
-          value={formData.remoteAccess}
-          onChange={handleChange}
-        />
-      </div>
-      <div>
+      <div className="EditItemDivLabel">
         <label>Signal RX:</label>
         <input
+          className="EditItemInput"
           type="text"
           name="signalRX"
           value={formData.signalRX}
           onChange={handleChange}
         />
       </div>
-      <button type="button" onClick={handleSave}>
+      <div className=" RemoteAcessInputCheck">
+        <label>Remote Access:</label>
+        <input
+          type="checkbox"
+          name="remoteAccess"
+          checked={formData.remoteAccess}
+          onChange={handleChange}
+        />
+      </div>
+      <div className="EditItemDivLabel">
+        <label>Used At:</label>
+        <textarea
+          className="EditItemInput"
+          type="text"
+          name="problem"
+          value={formData.problem}
+          onChange={handleChange}
+        />
+      </div>
+      <button className="SaveEditedItem" type="button" onClick={handleSave}>
         <Save size={15} />
         Save
       </button>
-      <button onClick={(e) => {
-        e.preventDefault()
-        setIsEditingItem(false)
-      }} className="closeEditButton">
-        <X size={15}/>
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          setIsEditingItem(false);
+        }}
+        className="closeEditButton"
+      >
+        <X size={15} color="black"/>
       </button>
     </form>
   );
