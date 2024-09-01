@@ -11,27 +11,30 @@ function LocalStorage(macList) {
 }
 
 function FetchDataFromAPI(setMacs, loading, SetLoading) {
-  fetch("http://localhost:5242/api/DeviceActions/GetAllDevices")
+  fetch("http://localhost:5242/GetAllDevices")
     .then((response) => response.json())
     .then((dataMacList) => {
       if (dataMacList != null) {
+        console.log('data recived from database', dataMacList);
         localStorage.setItem("macList", JSON.stringify(dataMacList));
         setMacs(dataMacList);
         SetLoading(false);
-        console.log('this data', dataMacList);
       }
     })
-    .catch((error) => {
+    .catch((error) => {//throw a error if something get error
       console.error("Error at fetching data:", error);
     });
 }
 
+
+//fetch data at local_storage, 
 function CheckLocalStorageOrFetch(setMacs, loading, SetLoading) {
   const storedData = localStorage.getItem("macList");
   if (storedData) {
     const _parsedData = JSON.parse(storedData);
     setMacs(_parsedData);
   } else {
+    //if not found, then fetch from database
     FetchDataFromAPI(setMacs, SetLoading);
     if (SetLoading) {
       SetLoading(true);

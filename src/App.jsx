@@ -24,6 +24,7 @@ function App() {
     LocalStorageAndFuncs.CheckLocalStorageOrFetch(setMacs, loading, setLoading);
   }, []);
 
+  //fetch database by 1000sec
   useDataUpdater(LocalStorageAndFuncs.LocalStorage(macs),1000)
 
   return (
