@@ -1,4 +1,5 @@
 import { useState } from "react";
+import CreateDevice from '../Context/DataHandler.jsx'
 import "./ContentsStyles/CreateMacStyles.css";
 import { v4 as uuidv4 } from "uuid";
 
@@ -14,7 +15,7 @@ export default function CreateMac({
   const [mac, setMac] = useState("");
   const [problem, setProblem] = useState("");
   const [signalRX, setSignalRX] = useState("");
-  const [checkDate, setCheckDate] = useState("");
+  const [UsedAt, setUsedAt] = useState("");
   const [remoteAccess, setRemoteAccess] = useState(false);
 
   const isValidMac = (mac) => {
@@ -43,12 +44,31 @@ export default function CreateMac({
       mac,
       model,
       problem: problem === "" ? "OK" : problem,
-      usedAt ,  
+      UsedAt ,  
       signalRX: `${-signalRX}`,
-      checkDate,
       remoteAccess,
     };
 
+    const data = {
+      id: 0,
+      model: "teste",
+      mac: "teste",
+      remoteAcess: true,
+      problem: [
+        {
+          id: 0,
+          name: "teste",
+          description: "teste",
+        },
+      ],
+      usedAtWrapper: [
+        {
+          id: 0,
+          name: "teste",
+        },
+      ],
+    };
+    CreateDevice(data)
     setMacs((prevMacs) => [...prevMacs, newMacData]);
     console.log("saving data at database");
     setCreate(!create);
@@ -101,10 +121,10 @@ export default function CreateMac({
           />
           <input
             type="text"
-            value={checkDate}
-            onChange={(e) => setCheckDate(e.target.value)}
-            id="CheckDate"
-            placeholder="Check Date"
+            value={UsedAt}
+            onChange={(e) => setUsedAt(e.target.value)}
+            id="UsedAt"
+            placeholder="UsedAt"
           />
           <p></p>
           <p>Remote Access</p>

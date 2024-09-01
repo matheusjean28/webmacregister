@@ -11,13 +11,14 @@ function LocalStorage(macList) {
 }
 
 function FetchDataFromAPI(setMacs, loading, SetLoading) {
-  fetch("http://localhost:5242/MacMainDatabase")
+  fetch("http://localhost:5242/api/DeviceActions/GetAllDevices")
     .then((response) => response.json())
     .then((dataMacList) => {
       if (dataMacList != null) {
         localStorage.setItem("macList", JSON.stringify(dataMacList));
         setMacs(dataMacList);
         SetLoading(false);
+        console.log('this data', dataMacList);
       }
     })
     .catch((error) => {
