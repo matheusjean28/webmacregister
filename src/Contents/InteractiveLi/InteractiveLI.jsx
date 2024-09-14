@@ -6,7 +6,7 @@ import RenderEmpytItem from "../../Utils/RenderEmpytItem";
 import EditInteractiveLI from "./EditInteractiveLI";
 
 export default function InteractiveLI({ selectLiId, macs }) {
-  var { checkDate, mac, model, problem, remoteAccess, signalRX } =
+  var { checkDate, mac, model, problem, remoteAccess, signalRX, UsedAt } =
     macs[selectLiId];
 
   const [isEditingItem, setIsEditingItem] = useState(false);
@@ -30,7 +30,7 @@ export default function InteractiveLI({ selectLiId, macs }) {
   const handleLabelRender = (label) => {
     try {
       label == "usedIn"
-        ? SetLabelToRender({ field: "usedIn", data: clients })
+        ? SetLabelToRender({ field: "usedIn", data: UsedAt })
         : "";
       label == "problem"
         ? SetLabelToRender({ field: "problem", data: problem })
@@ -42,7 +42,6 @@ export default function InteractiveLI({ selectLiId, macs }) {
 
   return (
     <>
-
       <div className="InteractiveLIConteiner">
         {/* <h4 className="DeviceInformationCenter">Device Information</h4> */}
         <span className="FielSpanConfig">
@@ -90,9 +89,8 @@ export default function InteractiveLI({ selectLiId, macs }) {
               handleLabelRender("usedIn");
             }}
           >
-            {clients.map((e) => {
-              return `\n${e.name}`;
-            })}
+            {/* change later, read an array of the clients */}
+            {UsedAt}
           </button>
         </span>
 
@@ -114,7 +112,7 @@ export default function InteractiveLI({ selectLiId, macs }) {
             className="FielSpanConfig ButtonEdit "
             onClick={(e) => {
               e.preventDefault();
-              setIsEditingItem(!isEditingItem)
+              setIsEditingItem(!isEditingItem);
               console.log(macs[selectLiId]);
             }}
           >
@@ -125,8 +123,16 @@ export default function InteractiveLI({ selectLiId, macs }) {
       {showRigthBar ? <RigthBar labelToRender={labelToRender} /> : ""}
 
       {/* need array mac complete to push new item  */}
-    {isEditingItem ? <EditInteractiveLI  isEditingItem={isEditingItem} setIsEditingItem={setIsEditingItem}  selectLiId={selectLiId} macs={macs[selectLiId]}/> : ""}
-
+      {isEditingItem ? (
+        <EditInteractiveLI
+          isEditingItem={isEditingItem}
+          setIsEditingItem={setIsEditingItem}
+          selectLiId={selectLiId}
+          macs={macs[selectLiId]}
+        />
+      ) : (
+        ""
+      )}
     </>
   );
 }

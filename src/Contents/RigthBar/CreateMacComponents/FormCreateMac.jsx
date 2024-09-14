@@ -52,7 +52,9 @@ export default function FormCreateMac({
             type="text"
             value={problem}
             onChange={(e) => {
-              setProblem(e.target.value === "" ? "OK" : e.target.value.toUpperCase());
+              setProblem(
+                e.target.value === "" ? "OK" : e.target.value.toUpperCase()
+              );
             }}
             id="Problem"
             placeholder="Problem"

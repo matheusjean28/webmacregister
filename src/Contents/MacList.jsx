@@ -26,81 +26,89 @@ export default function MacList({ macs }) {
     }
   };
 
-
   if (macs.length === 0) {
     //active if maclist is == 0
-    return <EmpytMacList  />;
+    return <EmpytMacList />;
   } else {
     return (
-      <> {showInteractiveLI && (
-        <InteractiveLI selectLiId={selectLiId} macs={macs} />
-      )}
+      <>
+      
+        {showInteractiveLI && (
+          <InteractiveLI selectLiId={selectLiId} macs={macs} />
+        )}
         <ul className="MacListConteiner">
           {create ? (
             <CreateMac />
           ) : (
-            
             //searchResult : macs defines betweem result search or data at localstorage
-            Array.from(isSearching ? searchResult : macs).reverse().map(
-              (
-                { id, checkDate, mac, model, problem, remoteAccess, signalRX },
-                index
-              ) =>
-                remoteAccess ? (
-                  <li
-                    onClick={(e) => {
-                      handleInteractiveLI(e, id);
-                    }}
-                    key={id}
-                    className="MacListLi remoteAccessTrue"
-                  >
-                    <p>{RenderEmpytItem(model)}</p>
-                    <p>{RenderEmpytItem(mac)}</p>
-                    <p>{RenderEmpytItem(problem.problemName[0])}</p>
-                    <p>{"t"}</p>
-                    <p>{RenderEmpytItem(signalRX)} </p>
-                    <p>{RenderEmpytItem(checkDate)} </p>
-                    {remoteAccess ? (
-                      <p className="remoteAccessTrue">
-                        {" "}
-                        <Check />{" "}
-                      </p>
-                    ) : (
-                      <p>
-                        {" "}
-                        <X />{" "}
-                      </p>
-                    )}
-                  </li>
-                ) : (
-                  <li
-                    onClick={(e) => {
-                      handleInteractiveLI(e, id);
-                    }}
-                    key={id}
-                    className="MacListLi "
-                  >
-                    <p>{RenderEmpytItem(model)}</p>
-                    <p>{RenderEmpytItem(mac)}</p>
-                    <p>{RenderEmpytItem(problem)}</p>
-                    <p>{RenderEmpytItem(signalRX)} </p>
-                    <p>{RenderEmpytItem(checkDate)} </p>
-                    {remoteAccess ? (
-                      <p className="remoteAccessTrue">
-                        {" "}
-                        <Check />{" "}
-                      </p>
-                    ) : (
-                      <p>
-                        {" "}
-                        <X />{" "}
-                      </p>
-                    )}
-                  </li>
-                )
-            )
+            Array.from(isSearching ? searchResult : macs)
+              .reverse()
+              .map(
+                (
+                  {
+                    id,
+                    checkDate,
+                    mac,
+                    model,
+                    problem,
+                    remoteAccess,
+                    signalRX,
+                    usedAt,
+                  },
+                  index
+                ) =>
+                  remoteAccess ? (
+                    <li
+                      onClick={(e) => {
+                        handleInteractiveLI(e, id);
+                      }}
+                      key={id}
+                      className="MacListLi remoteAccessTrue"
+                    >
+                      <p>{RenderEmpytItem(model)}</p>
+                      <p>{RenderEmpytItem(mac)}</p>
+                      <p>{RenderEmpytItem(problem.problemName[0])}</p>
+                      <p>{RenderEmpytItem(usedAt)}</p>                        
+
+                      <p>{RenderEmpytItem(signalRX)} </p>
+                      <p>{RenderEmpytItem(checkDate)} </p>
+                      {remoteAccess ? (
+                        <p className="remoteAccessTrue">
+                          <Check />
+                        </p>
+                      ) : (
+                        <p>
+                          <X />
+                        </p>
+                      )}
+                    </li>
+                  ) : (
+                    <li
+                      onClick={(e) => {
+                        handleInteractiveLI(e, id);
+                      }}
+                      key={id}
+                      className="MacListLi "
+                    >
+                      <p>{RenderEmpytItem(model)}</p>
+                      <p>{RenderEmpytItem(mac)}</p>
+                      <p>{RenderEmpytItem(problem)}</p>
+                      <p>{RenderEmpytItem(usedAt)}</p>                        
+                      <p>{RenderEmpytItem(signalRX)} </p>
+                      <p>{RenderEmpytItem(checkDate)} </p>
+                      {remoteAccess ? (
+                        <p className="remoteAccessTrue">
+                          <Check />
+                        </p>
+                      ) : (
+                        <p>
+                          <X />
+                        </p>
+                      )}
+                    </li>
+                  )
+              )
           )}
-         
         </ul>
       </>
     );

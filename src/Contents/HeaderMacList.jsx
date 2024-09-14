@@ -3,13 +3,13 @@ export default function HeaderMacList() {
   return (
     <>
       <div className="HeaderMacListConteiner">
-        <p>MODEL</p>
-        <p>MAC</p>
-        <p>PROBLEM</p>
-        <p>SENSITIVITY</p>
-        <p>FIBER TIP</p>
-        <p>MEASUREMENT DATE</p>
-        <p>REMOTE ACESS</p>
+        <h6>MODEL</h6>
+        <h6>MAC</h6>
+        <h6>PROBLEM</h6>
+        <h6>SENSITIVITY</h6>
+        <h6>FIBER TIP</h6>
+        <h6>MEASUREMENT DATE</h6>
+        <h6>REMOTE ACESS</h6>
       </div>
     </>
   );
