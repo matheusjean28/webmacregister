@@ -23,6 +23,7 @@ function FetchDataFromAPI(setMacs, loading, SetLoading) {
     })
     .catch((error) => {
       console.error("Error at fetching data:", error);
+      console.log("catch here, dont fetch data")
     });
 }
 

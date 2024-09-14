@@ -6,7 +6,7 @@ import HeaderMacList from "./Contents/HeaderMacList";
 import LoadingData from "./Contents/LoadingData";
 import { GlobalContext } from "./Context/GlobalContext";
 import LocalStorageAndFuncs from "./Context/LocalStorageAndFuncs";
-import CreateMac from "./Contents/CreateMac";
+import CreateMac from "./Contents/RigthBar/CreateMacComponents/CreateMac";
 import LoadingThreeDots from "./Contents/LoadingThreeDots";
 import CreateDeviceModel from "./Contents/CreateDeviceModel";
 import useDataUpdater from './Hooks/useDataUpdater'

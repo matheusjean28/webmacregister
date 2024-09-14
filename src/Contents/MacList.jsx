@@ -1,5 +1,5 @@
 import "./ContentsStyles/MacListStyles.css";
-import CreateMac from "./CreateMac.jsx";
+import CreateMac from "./RigthBar/CreateMacComponents/CreateMac.jsx";
 import { useContext, useState } from "react";
 import InteractiveLI from "./InteractiveLi/InteractiveLI.jsx";
 import FilterSearchFuncions from "../Context/FIlterSearchFuncions.jsx";
@@ -26,15 +26,10 @@ export default function MacList({ macs }) {
     }
   };
 
-  const handleCreate = (e, mac) => {
-    e.preventDefault();
-    setCreate(!create);
-    setSelectLiId(mac);
-    setIsInteractiveOpen(false);
-  };
 
   if (macs.length === 0) {
-    return <EmpytMacList />;
+    //active if maclist is == 0
+    return <EmpytMacList  />;
   } else {
     return (
       <> {showInteractiveLI && (
@@ -61,7 +56,8 @@ export default function MacList({ macs }) {
                   >
                     <p>{RenderEmpytItem(model)}</p>
                     <p>{RenderEmpytItem(mac)}</p>
-                    <p>{RenderEmpytItem(problem)}</p>
+                    <p>{RenderEmpytItem(problem.problemName[0])}</p>
+                    <p>{"t"}</p>
                     <p>{RenderEmpytItem(signalRX)} </p>
                     <p>{RenderEmpytItem(checkDate)} </p>
                     {remoteAccess ? (
