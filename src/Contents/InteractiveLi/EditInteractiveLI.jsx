@@ -7,7 +7,8 @@ export default function EditInteractiveLI({ selectLiId, setIsEditingItem }) {
   const { macs, setMacs } = useContext(GlobalContext);
   const selectedMac = macs[selectLiId];
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({//missing item ID
+    id: selectedMac.id,
     checkDate: selectedMac.checkDate,
     mac: selectedMac.mac,
     model: selectedMac.model,

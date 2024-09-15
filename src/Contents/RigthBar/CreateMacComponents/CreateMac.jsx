@@ -35,7 +35,7 @@ export default function CreateMac({
     e.preventDefault();
 
     if (!isValidMac(mac) || !isValidSignalRX(signalRX)) {
-      return;
+      return console.error("invalid field mac or signal");
     }
 
     const newMacData = {

@@ -6,7 +6,7 @@ import {  useContext } from "react";
 
 export default function EmpytMacList() {
   //display a message to user about dont have any macs saved yet
-  const { setCreate, create, setIsInteractiveOpen } = useContext(GlobalContext);
+  const { setCreate, create } = useContext(GlobalContext);
   return (
     <>
       <div className="MacListEmpytList">
@@ -15,7 +15,6 @@ export default function EmpytMacList() {
         <button
           onClick={(e) => {
             setCreate(!create);
-            setIsInteractiveOpen(false);
           }}
           className="MacListEmpytListButton"
         >

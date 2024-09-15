@@ -14,9 +14,9 @@ export default function MacList({ macs }) {
 
   const [showInteractiveLI, setShowInteractiveLI] = useState(false);
   const [selectLiId, setSelectLiId] = useState(Number);
-  const [isInteractiveOpen, setIsInteractiveOpen] = useState(false);
 
   const handleInteractiveLI = (e, id) => {
+    console.log(id)
     e.preventDefault();
     setShowInteractiveLI(!showInteractiveLI);
     const selectedItemIndex = FilterSearchFuncions.GetItemByIdAtList(macs, id);
