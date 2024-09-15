@@ -67,7 +67,7 @@ export default function MacList({ macs }) {
                     >
                       <p>{RenderEmpytItem(model)}</p>
                       <p>{RenderEmpytItem(mac)}</p>
-                      <p>{RenderEmpytItem(problem.problemName[0])}</p>
+                      <p>{RenderEmpytItem(problem)}</p>
                       <p>{RenderEmpytItem(usedAt)}</p>                        
 
                       <p>{RenderEmpytItem(signalRX)} </p>

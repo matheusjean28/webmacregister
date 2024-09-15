@@ -14,6 +14,7 @@ export default function EditInteractiveLI({ selectLiId, setIsEditingItem }) {
     problem: selectedMac.problem,
     remoteAccess: selectedMac.remoteAccess,
     signalRX: selectedMac.signalRX,
+    usedAt: selectedMac.usedAt
   });
 
   const handleChange = (e) => {
@@ -89,8 +90,8 @@ export default function EditInteractiveLI({ selectLiId, setIsEditingItem }) {
         <textarea
           className="EditItemInput"
           type="text"
-          name="problem"
-          value={formData.problem}
+          name="usedAt"
+          value={formData.usedAt}
           onChange={handleChange}
         />
       </div>

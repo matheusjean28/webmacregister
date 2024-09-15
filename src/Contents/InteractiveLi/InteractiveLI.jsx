@@ -6,7 +6,7 @@ import RenderEmpytItem from "../../Utils/RenderEmpytItem";
 import EditInteractiveLI from "./EditInteractiveLI";
 
 export default function InteractiveLI({ selectLiId, macs }) {
-  var { checkDate, mac, model, problem, remoteAccess, signalRX, UsedAt } =
+  var { checkDate, mac, model, problem, remoteAccess, signalRX, usedAt } =
     macs[selectLiId];
 
   const [isEditingItem, setIsEditingItem] = useState(false);
@@ -30,7 +30,7 @@ export default function InteractiveLI({ selectLiId, macs }) {
   const handleLabelRender = (label) => {
     try {
       label == "usedIn"
-        ? SetLabelToRender({ field: "usedIn", data: UsedAt })
+        ? SetLabelToRender({ field: "usedIn", data: usedAt })
         : "";
       label == "problem"
         ? SetLabelToRender({ field: "problem", data: problem })
@@ -90,7 +90,7 @@ export default function InteractiveLI({ selectLiId, macs }) {
             }}
           >
             {/* change later, read an array of the clients */}
-            {UsedAt}
+            {usedAt}
           </button>
         </span>
 
