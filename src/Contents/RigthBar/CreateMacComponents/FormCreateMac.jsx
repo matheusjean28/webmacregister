@@ -5,7 +5,7 @@ export default function FormCreateMac({
   mac,
   problem,
   signalRX,
-  UsedAt,
+  usedAt,
   remoteAccess,
   setModel,
   setMac,
@@ -69,9 +69,11 @@ export default function FormCreateMac({
           />
           <input
             type="text"
-            value={UsedAt}
-            onChange={(e) => setUsedAt(e.target.value.toUpperCase())}
-            id="UsedAt"
+            value={usedAt}
+            onChange={(e) =>{ setUsedAt(e.target.value.toUpperCase())
+              console.log(e.target.value.toUpperCase())}
+            }
+            id="usedAt"
             placeholder="UsedAt"
           />
           <p></p>

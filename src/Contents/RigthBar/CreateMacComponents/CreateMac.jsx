@@ -16,7 +16,7 @@ export default function CreateMac({
   const [mac, setMac] = useState("");
   const [problem, setProblem] = useState("");
   const [signalRX, setSignalRX] = useState("");
-  const [UsedAt, setUsedAt] = useState("");
+  const [usedAt, setUsedAt] = useState("");
   const [remoteAccess, setRemoteAccess] = useState(false);
 
   const isValidMac = (mac) => {
@@ -43,12 +43,13 @@ export default function CreateMac({
       mac,
       model,
       problem: problem === "" ? "OK" : problem,
-      UsedAt,
+      usedAt:usedAt === "" ? "XXX" : usedAt,
       signalRX: `${-signalRX}`,
       remoteAccess,
     };
     
     CreateDevice(newMacData); //POST DATA at api
+    console.log("savind new data:\n", newMacData)
     setMacs((prevMacs) => [...prevMacs, newMacData]);
     setCreate(!create);
   }
@@ -59,7 +60,7 @@ export default function CreateMac({
       mac={mac}
       problem={problem}
       signalRX={signalRX}
-      UsedAt={UsedAt}
+      usedAt={usedAt}
       remoteAccess={remoteAccess}
       setModel={setModel}
       setMac={setMac}
