@@ -32,7 +32,6 @@ export default function MacList({ macs }) {
   } else {
     return (
       <>
-      
         {showInteractiveLI && (
           <InteractiveLI selectLiId={selectLiId} macs={macs} />
         )}
@@ -57,9 +56,10 @@ export default function MacList({ macs }) {
                   },
                   index
                 ) =>
-                  remoteAccess ? (
+                  remoteAccess ? ( //start remote acess true
                     <li
                       onClick={(e) => {
+                        console.log(id);
                         handleInteractiveLI(e, id);
                       }}
                       key={id}
@@ -68,24 +68,27 @@ export default function MacList({ macs }) {
                       <p>{RenderEmpytItem(model)}</p>
                       <p>{RenderEmpytItem(mac)}</p>
                       <p>{RenderEmpytItem(problem)}</p>
-                      <p>{RenderEmpytItem(usedAt)}</p>                        
-
+                      <p>{RenderEmpytItem(usedAt)}</p>
                       <p>{RenderEmpytItem(signalRX)} </p>
                       <p>{RenderEmpytItem(checkDate)} </p>
                       {remoteAccess ? (
-                        <p className="remoteAccessTrue">
-                          <Check />
+                        <p className="">
+                          <Check size={15} />
                         </p>
                       ) : (
                         <p>
-                          <X />
+                          <X size={15} />
                         </p>
                       )}
                     </li>
                   ) : (
+                    //end remote acess true
+
+                    //start remote acess false
                     <li
                       onClick={(e) => {
                         handleInteractiveLI(e, id);
+                        console.log(id);
                       }}
                       key={id}
                       className="MacListLi "
@@ -93,20 +96,20 @@ export default function MacList({ macs }) {
                       <p>{RenderEmpytItem(model)}</p>
                       <p>{RenderEmpytItem(mac)}</p>
                       <p>{RenderEmpytItem(problem)}</p>
-                      <p>{RenderEmpytItem(usedAt)}</p>                        
+                      <p>{RenderEmpytItem(usedAt)}</p>
                       <p>{RenderEmpytItem(signalRX)} </p>
                       <p>{RenderEmpytItem(checkDate)} </p>
                       {remoteAccess ? (
-                        <p className="remoteAccessTrue">
-                          <Check />
+                        <p className="">
+                          <Check size={15} />
                         </p>
                       ) : (
                         <p>
-                          <X />
+                          <X size={15} />
                         </p>
                       )}
                     </li>
-                  )
+                  ) //end remote acess false
               )
           )}
         </ul>
