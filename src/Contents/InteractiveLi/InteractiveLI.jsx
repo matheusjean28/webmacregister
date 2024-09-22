@@ -12,20 +12,7 @@ export default function InteractiveLI({ selectLiId, macs }) {
   const [isEditingItem, setIsEditingItem] = useState(false);
   const [showRigthBar, SetShowRigthBar] = useState(false);
   const [labelToRender, SetLabelToRender] = useState("");
-  var clients = [
-    { id: 123, name: "Ana MarioMario da silva ferreirta" },
-    { id: 456, name: "Mario" },
-    { id: 123, name: "Ana" },
-    { id: 456, name: "Mario" },
-    { id: 123, name: "Ana" },
-    { id: 456, name: "Mario" },
-    { id: 123, name: "Ana" },
-    { id: 456, name: "Mario" },
-    { id: 123, name: "Ana" },
-    { id: 456, name: "Mario" },
-    { id: 123, name: "Ana" },
-    { id: 456, name: "Mario" },
-  ];
+ 
 
   const handleLabelRender = (label) => {
     try {

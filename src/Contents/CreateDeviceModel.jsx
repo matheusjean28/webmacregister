@@ -1,7 +1,7 @@
 import "./ContentsStyles/CreateDeviceModelStyles.css";
 import { GlobalContext } from "../Context/GlobalContext";
 import { useContext, useState } from "react";
-import {X,Router }from   'lucide-react'
+import { X, Router } from "lucide-react";
 
 export default function CreateDeviceModel() {
   const { deviceModel, setDeviceModel, createModel, setCreateModel } =
@@ -13,9 +13,6 @@ export default function CreateDeviceModel() {
 
   const [modelInput, setModelInput] = useState(false);
   const [ownerInput, setOwnerInput] = useState(false);
-
-
-
 
   const handleCloseButton = (e) => {
     e.preventDefault();
@@ -57,7 +54,7 @@ export default function CreateDeviceModel() {
     <div className="CreateDeviceModelConteiner">
       <form className="CreateDeviceMacForm" onSubmit={handleCreateDevice}>
         <button className="close" onClick={handleCloseButton}>
-          <X size={12}/>
+          <X size={12} />
         </button>
 
         <h4 className="HeaderCreateDeviceModel">
@@ -91,6 +88,7 @@ export default function CreateDeviceModel() {
           name="Mode"
           id="Mode"
           value={mode}
+          placeholder="Mode"
           onChange={(e) => setMode(e.target.value.toUpperCase())}
         >
           <option value="Router">Router</option>
@@ -99,7 +97,7 @@ export default function CreateDeviceModel() {
         </select>
         <button className="CreateButton" type="submit">
           Create
-          <Router color="black" size={18}/>
+          <Router color="black" size={18} />
         </button>
       </form>
     </div>
