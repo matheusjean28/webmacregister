@@ -16,7 +16,7 @@ export default function MacList({ macs }) {
   const [selectLiId, setSelectLiId] = useState(Number);
 
   const handleInteractiveLI = (e, id) => {
-    console.log(id)
+    console.log(id);
     e.preventDefault();
     setShowInteractiveLI(!showInteractiveLI);
     const selectedItemIndex = FilterSearchFuncions.GetItemByIdAtList(macs, id);
@@ -65,18 +65,30 @@ export default function MacList({ macs }) {
                       key={id}
                       className="MacListLi remoteAccessTrue"
                     >
-                      <p>{RenderEmpytItem(model)}</p>
-                      <p>{RenderEmpytItem(mac)}</p>
-                      <p>{RenderEmpytItem(problem)}</p>
-                      <p>{RenderEmpytItem(usedAt)}</p>
-                      <p>{RenderEmpytItem(signalRX)} </p>
-                      <p>{RenderEmpytItem(checkDate)} </p>
+                      <p className="MacListProblemOverflow">
+                        {RenderEmpytItem(model)}
+                      </p>
+                      <p className="MacListProblemOverflow">
+                        {RenderEmpytItem(mac)}
+                      </p>
+                      <p className="MacListProblemOverflow">
+                        {RenderEmpytItem(problem)}
+                      </p>
+                      <p className="MacListProblemOverflow">
+                        {RenderEmpytItem(usedAt)}
+                      </p>
+                      <p className="MacListProblemOverflow">
+                        {RenderEmpytItem(signalRX)}
+                      </p>
+                      <p className="MacListProblemOverflow">
+                        {RenderEmpytItem(checkDate)}
+                      </p>
                       {remoteAccess ? (
-                        <p className="">
+                        <p className="MacListProblemOverflow">
                           <Check size={15} />
                         </p>
                       ) : (
-                        <p>
+                        <p className="MacListProblemOverflow">
                           <X size={15} />
                         </p>
                       )}
@@ -93,18 +105,30 @@ export default function MacList({ macs }) {
                       key={id}
                       className="MacListLi "
                     >
-                      <p>{RenderEmpytItem(model)}</p>
-                      <p>{RenderEmpytItem(mac)}</p>
-                      <p>{RenderEmpytItem(problem)}</p>
-                      <p>{RenderEmpytItem(usedAt)}</p>
-                      <p>{RenderEmpytItem(signalRX)} </p>
-                      <p>{RenderEmpytItem(checkDate)} </p>
+                      <p className="MacListProblemOverflow">
+                        {RenderEmpytItem(model)}
+                      </p>
+                      <p className="MacListProblemOverflow">
+                        {RenderEmpytItem(mac)}
+                      </p>
+                      <p className="MacListProblemOverflow">
+                        {RenderEmpytItem(problem)}
+                      </p>
+                      <p className="MacListProblemOverflow">
+                        {RenderEmpytItem(usedAt)}
+                      </p>
+                      <p className="MacListProblemOverflow">{
+                        signalRX ? signalRX.toFixed() : RenderEmpytItem(signalRX)
+                        }</p>
+                      <p className="MacListProblemOverflow">
+                        {RenderEmpytItem(checkDate)}
+                      </p>
                       {remoteAccess ? (
-                        <p className="">
+                        <p className="MacListProblemOverflow">
                           <Check size={15} />
                         </p>
                       ) : (
-                        <p>
+                        <p className="MacListProblemOverflow">
                           <X size={15} />
                         </p>
                       )}

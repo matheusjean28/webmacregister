@@ -44,7 +44,12 @@
   border-right: solid   1px gray; 
 }
 
-
+.MacListProblemOverflow {
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 
 
