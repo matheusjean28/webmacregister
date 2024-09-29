@@ -66,7 +66,6 @@ export default function SearchBar() {
           placeholder="Search Something"
           //when this value is '' result return all list
           onChange={(e) => {
-            console.log(e.target.value)
             if (e.target.value == "") {
               setISearching(false);
             }
