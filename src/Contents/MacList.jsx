@@ -7,6 +7,7 @@ import { GlobalContext } from "../Context/GlobalContext";
 import EmpytMacList from "./MacList/EmpytMacList.jsx";
 import { X, Check } from "lucide-react";
 import RenderEmpytItem from "../Utils/RenderEmpytItem.jsx";
+import ParseStringToFloat from "../Utils/ParseStringToFloat.jsx";
 
 export default function MacList({ macs }) {
   var { isSearching, searchResult, create, setCreate } =
@@ -78,7 +79,13 @@ export default function MacList({ macs }) {
                         {RenderEmpytItem(usedAt)}
                       </p>
                       <p className="MacListProblemOverflow">
-                        {RenderEmpytItem(signalRX)}
+                        {
+                          //check if signalRx can be converted to int and then to float
+                          //if it can, then return a parsed value, otherwise return a empyt item icon
+                          signalRX
+                            ? ParseStringToFloat(signalRX)
+                            : RenderEmpytItem(signalRX)
+                        }
                       </p>
                       <p className="MacListProblemOverflow">
                         {RenderEmpytItem(checkDate)}
@@ -117,9 +124,15 @@ export default function MacList({ macs }) {
                       <p className="MacListProblemOverflow">
                         {RenderEmpytItem(usedAt)}
                       </p>
-                      <p className="MacListProblemOverflow">{
-                        signalRX ? signalRX.toFixed() : RenderEmpytItem(signalRX)
-                        }</p>
+                      <p className="MacListProblemOverflow">
+                        {
+                          //check if signalRx can be converted to int and then to float
+                          //if it can, then return a parsed value, otherwise return a empyt item icon
+                          signalRX
+                            ? ParseStringToFloat(signalRX)
+                            : RenderEmpytItem(signalRX)
+                        }
+                      </p>
                       <p className="MacListProblemOverflow">
                         {RenderEmpytItem(checkDate)}
                       </p>
