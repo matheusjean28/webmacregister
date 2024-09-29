@@ -39,8 +39,11 @@ export default function SearchBar() {
 
   const handleSearchMac = () => {
     setISearching(true);
-    SearchResultFilter(find, macs);
     try {
+      if (find.length == 0) {
+        throw "cannot search for empyt";
+      }
+
       setSearchResult(SearchResultFilter(find, macs));
     } catch (error) {
       console.error(error);
@@ -63,10 +66,12 @@ export default function SearchBar() {
           placeholder="Search Something"
           //when this value is '' result return all list
           onChange={(e) => {
+            console.log(e.target.value)
             if (e.target.value == "") {
               setISearching(false);
             }
-            setFind(e.target.value);
+            
+            setFind(e.target.value.trim());
           }}
         />
         <button

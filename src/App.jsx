@@ -13,7 +13,7 @@ import useDataUpdater from './Hooks/useDataUpdater'
 
 function App() {
   const [macs, setMacs] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [create, setCreate] = useState(false);
   const [createModel, setCreateModel] = useState(false);
   const [deviceModel, setDeviceModel] = useState([]);
