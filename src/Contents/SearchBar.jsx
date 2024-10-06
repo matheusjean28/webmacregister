@@ -20,6 +20,10 @@ export default function SearchBar() {
     createModel,
 
     setCreateModel,
+    notificationStatus,
+    setNotificationStatus,
+    notificationMessage,
+    setNotificationMessage,
   } = useContext(GlobalContext);
   const handleCreate = (e) => {
     e.preventDefault();
@@ -38,15 +42,17 @@ export default function SearchBar() {
   };
 
   const handleSearchMac = () => {
-    setISearching(true);
     try {
       if (find.length == 0) {
         throw "cannot search for empyt";
       }
+      setISearching(true);
 
       setSearchResult(SearchResultFilter(find, macs));
     } catch (error) {
       console.error(error);
+      setNotificationMessage(error);
+      setNotificationStatus(true)
     }
   };
 
@@ -69,7 +75,7 @@ export default function SearchBar() {
             if (e.target.value == "") {
               setISearching(false);
             }
-            
+
             setFind(e.target.value.trim());
           }}
         />

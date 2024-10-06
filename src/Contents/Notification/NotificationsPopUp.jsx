@@ -13,15 +13,16 @@ const NotificationsPopUp = () => {
   } = useContext(GlobalContext);
 
   useEffect(() => {
-        //should reset state after display that at screen for a while
-      const resetState = () => {
-          setNotificationMessage(""),
-           setNotificationStatus(false);
-        };
-        const intervalId = setInterval(resetState, 2000);
-        
-    
-  }, [notificationStatus]);
+    if (notificationStatus) {
+      const timerId = setTimeout(() => {
+        setNotificationMessage("");
+        setNotificationStatus(false);
+      }, 5000);
+
+      
+      return () => clearTimeout(timerId);
+    }
+  }, [notificationStatus, setNotificationMessage, setNotificationStatus]);
 
   return (
     <>

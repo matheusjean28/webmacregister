@@ -52,8 +52,8 @@ function App() {
         setNotificationMessage,
       }}
     >
-      <Headers />
       <NotificationsPopUp />
+      <Headers />
       {loading ? <LoadingThreeDots /> : ""}
       {createModel ? (
         <>
