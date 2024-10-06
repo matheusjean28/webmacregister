@@ -9,7 +9,8 @@ import LocalStorageAndFuncs from "./Context/LocalStorageAndFuncs";
 import CreateMac from "./Contents/RigthBar/CreateMacComponents/CreateMac";
 import LoadingThreeDots from "./Contents/LoadingThreeDots";
 import CreateDeviceModel from "./Contents/CreateDeviceModel";
-import useDataUpdater from './Hooks/useDataUpdater'
+import useDataUpdater from "./Hooks/useDataUpdater";
+import NotificationsPopUp from "./Contents/Notification/NotificationsPopUp";
 
 function App() {
   const [macs, setMacs] = useState([]);
@@ -19,12 +20,14 @@ function App() {
   const [deviceModel, setDeviceModel] = useState([]);
   const [isSearching, setISearching] = useState(false);
   const [searchResult, setSearchResult] = useState([]);
+  const [notificationStatus, setNotificationStatus] = useState(true);
+  const [notificationMessage, setNotificationMessage] = useState("testing message");
 
   useEffect(() => {
     LocalStorageAndFuncs.CheckLocalStorageOrFetch(setMacs, loading, setLoading);
   }, []);
 
-  useDataUpdater(LocalStorageAndFuncs.LocalStorage(macs),1000)
+  useDataUpdater(LocalStorageAndFuncs.LocalStorage(macs), 1000);
 
   return (
     <GlobalContext.Provider
@@ -43,9 +46,14 @@ function App() {
         setISearching,
         searchResult,
         setSearchResult,
+        notificationStatus,
+        setNotificationStatus,
+        notificationMessage,
+        setNotificationMessage,
       }}
     >
       <Headers />
+      <NotificationsPopUp />
       {loading ? <LoadingThreeDots /> : ""}
       {createModel ? (
         <>

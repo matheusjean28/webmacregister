@@ -1,0 +1,8 @@
+.NotificationContainer{
+    position: absolute;
+    
+    background-color: red;
+    display: flex;
+    
+    
+}
