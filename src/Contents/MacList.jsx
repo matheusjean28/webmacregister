@@ -5,7 +5,7 @@ import InteractiveLI from "./InteractiveLi/InteractiveLI.jsx";
 import FilterSearchFuncions from "../Context/FIlterSearchFuncions.jsx";
 import { GlobalContext } from "../Context/GlobalContext";
 import EmpytMacList from "./MacList/EmpytMacList.jsx";
-import { X, Check, Edit, Delete } from "lucide-react";
+import { X, Check, Edit, Delete, KeyIcon } from "lucide-react";
 import RenderEmpytItem from "../Utils/RenderEmpytItem.jsx";
 import ParseStringToFloat from "../Utils/ParseStringToFloat.jsx";
 import RemoveMac from "../Utils/RemoveMac.jsx";
@@ -35,13 +35,14 @@ export default function MacList() {
     }
   };
 
-  const handlerDeleteMac = () => {
+  const handlerDeleteMac = (id) => {
     try {
       const userConfirmed = window.confirm(
         "Would you like to delete that mac?"
       );
       if (userConfirmed) {
-        RemoveMac("", macs);
+        setMacs(RemoveMac(id, macs))
+
       }
     } catch (error) {
       console.log(error);
