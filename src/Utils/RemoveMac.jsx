@@ -11,7 +11,6 @@ export default function RemoveMac(id = "aaaa", array_of_macs = []) {
       console.log("igual zero");
       throw new Error("Invalid Mac Id");
     }
-
     const new_array_filtred = array_of_macs.filter((item) => item.id !== id);//check if item is igual id
 
     return new_array_filtred;

@@ -55,6 +55,8 @@ async function CreateDevice(data) {
   } else {
     console.error("field error");
   }
+
+  
 }
 
 export default CreateDevice;
