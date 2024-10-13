@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+  import React, { useEffect, useState } from "react";
 import Headers from "./Contents/Header";
 import SearchBar from "./Contents/SearchBar";
 import MacList from "./Contents/MacList";

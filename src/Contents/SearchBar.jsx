@@ -50,7 +50,6 @@ export default function SearchBar() {
 
       setSearchResult(SearchResultFilter(find, macs));
     } catch (error) {
-      console.error(error);
       setNotificationMessage(error);
       setNotificationStatus(true)
     }
