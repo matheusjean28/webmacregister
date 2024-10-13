@@ -6,7 +6,7 @@
   height: 440px;
   width: 100%;
 
-  padding: 3px ;
+  padding: 3px;
   border-radius: 10px;
   background: #005dae transparent;
   box-shadow: inset 5px 5px 10px #1b1b1b, inset -5px -5px 18px #0095ff45;
@@ -41,7 +41,7 @@
   flex: 1;
   text-align: left;
   padding-left: 6px;
-  border-right: solid   1px gray; 
+  border-right: solid 1px gray;
 }
 
 .MacListProblemOverflow {
@@ -51,10 +51,8 @@
   text-overflow: ellipsis;
 }
 
-
-
 /* other small component, so i'll leave this code here */
-.MacListEmpytList{
+.MacListEmpytList {
   display: flex;
   place-content: center;
   place-items: center;
@@ -76,7 +74,7 @@
   display: none;
 }
 
-.MacListEmpytListButton{
+.MacListEmpytListButton {
   padding: 5px;
   border-radius: 5px;
   color: #1b1b1b;
@@ -87,7 +85,7 @@
   color: aliceblue;
   transition: ease-in-out 5ms;
 
-  background-color:rgb(92, 92, 92);
+  background-color: rgb(92, 92, 92);
   border-radius: 6px;
 
   border: none;
@@ -96,11 +94,27 @@
 .notfound {
   margin: 0;
   padding: 0;
-  
+
   height: 100px;
   width: 100px;
 }
 
-.remoteAccessTrue{
-background-color: rgba(10, 182, 10, 0.65);
+.remoteAccessTrue {
+  background-color: rgba(10, 182, 10, 0.65);
 }
+
+.delete-mac-button {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+}
+
+.edit-mac-button {
+  position: absolute;
+  right: 35px;
+
+  border: none;
+  background: none;
+}
+

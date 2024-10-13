@@ -5,7 +5,7 @@ import InteractiveLI from "./InteractiveLi/InteractiveLI.jsx";
 import FilterSearchFuncions from "../Context/FIlterSearchFuncions.jsx";
 import { GlobalContext } from "../Context/GlobalContext";
 import EmpytMacList from "./MacList/EmpytMacList.jsx";
-import { X, Check } from "lucide-react";
+import { X, Check, Edit, Delete } from "lucide-react";
 import RenderEmpytItem from "../Utils/RenderEmpytItem.jsx";
 import ParseStringToFloat from "../Utils/ParseStringToFloat.jsx";
 
@@ -90,6 +90,7 @@ export default function MacList({ macs }) {
                       <p className="MacListProblemOverflow">
                         {RenderEmpytItem(checkDate)}
                       </p>
+
                       {remoteAccess ? (
                         <p className="MacListProblemOverflow">
                           <Check size={15} />
@@ -99,19 +100,18 @@ export default function MacList({ macs }) {
                           <X size={15} />
                         </p>
                       )}
+                      <button className="delete-mac-button">
+                        <Edit size={15} color="white" />
+                      </button>
+                      <button className="edit-mac-button">
+                        <Delete size={15} color="white" />
+                      </button>
                     </li>
                   ) : (
                     //end remote acess true
 
                     //start remote acess false
-                    <li
-                      onClick={(e) => {
-                        handleInteractiveLI(e, id);
-                        console.log(id);
-                      }}
-                      key={id}
-                      className="MacListLi "
-                    >
+                    <li className="MacListLi ">
                       <p className="MacListProblemOverflow">
                         {RenderEmpytItem(model)}
                       </p>
@@ -145,6 +145,12 @@ export default function MacList({ macs }) {
                           <X size={15} />
                         </p>
                       )}
+                      <button className="delete-mac-button">
+                        <Edit size={15} color="white" />
+                      </button>
+                      <button className="edit-mac-button">
+                        <Delete size={15} color="white" />
+                      </button>
                     </li>
                   ) //end remote acess false
               )

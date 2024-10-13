@@ -21,7 +21,10 @@ function App() {
   const [isSearching, setISearching] = useState(false);
   const [searchResult, setSearchResult] = useState([]);
   const [notificationStatus, setNotificationStatus] = useState(true);
-  const [notificationMessage, setNotificationMessage] = useState("testing message");
+  const [notificationMessage, setNotificationMessage] =
+    useState("testing message");
+
+  const [deletingItemId, setDeletingItemId] = useState([]); //quem user click to delete an item, it will be add here, and then, removed from database
 
   useEffect(() => {
     LocalStorageAndFuncs.CheckLocalStorageOrFetch(setMacs, loading, setLoading);
@@ -50,6 +53,8 @@ function App() {
         setNotificationStatus,
         notificationMessage,
         setNotificationMessage,
+        deletingItemId,
+        setDeletingItemId,
       }}
     >
       <NotificationsPopUp />
