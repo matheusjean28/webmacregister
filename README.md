@@ -1,99 +1,112 @@
-# webmacregister
-# Production website: 
-[MacRegister](https://macregister.netlify.app/)
+WebMacRegister — Internet Device Control System
+✅ Estado do Projeto
 
-Take a look on a reference in this github profile to see BackEnd api Resume:
+O projeto foi totalmente concluído e posteriormente evoluído para uma ferramenta interna corporativa.
+A versão final integra processos operacionais reais e por isso não é pública.
+O repositório no GitHub representa apenas a versão inicial da solução.
 
-[exemplo](https://github.com/matheusjean28/mac_register) 
+Production (Versão inicial):
+🔗 https://macregister.netlify.app/
 
-notice that this apliccation isn´t ready. 
+Backend de referência (versão inicial):
+🔗 https://github.com/matheusjean28/mac_register
 
-### Seleção de Idioma / Language Selection
+Observação: este repositório não reflete as funcionalidades avançadas da versão privada.
 
-[Português](#portugues) | [English](#english)
+🔵 Seleção de Idioma / Language Selection
 
----
+Português
+ | English
 
-### Português
+🇧🇷 Português
+📌 Sobre o Projeto
 
-Até o momento, este projeto utiliza apenas ReactJS sem bibliotecas de terceiros.
+O WebMacRegister nasceu como uma aplicação ReactJS (sem bibliotecas externas) focada no gerenciamento e controle de dispositivos de rede.
 
-#### Projeto de Controle de Internet de Aparelhos
+A aplicação cresceu, foi finalizada e acabou sendo incorporada ao ecossistema de TI de uma empresa onde trabalhei, transformando-se em um produto interno robusto, utilizado diariamente em operações de campo e análises técnicas.
 
-**Funcionalidades:**
-- Salvar Macs de dispositivos com:
-  - Modelo
-  - Fabricante
-  - Defeitos
-  - Antigos usuários
-  - Potência e resumo de medições do sinal óptico do aparelho
-  - Status de Acesso Remoto
+A versão pública demonstra apenas a primeira fase do projeto.
 
-- Busca Avançada por:
-  - Modelo
-  - Fabricante
-  - Defeitos
-  - Antigos usuários
-  - Potência e resumo de medições do sinal óptico do aparelho
-  - Status de Acesso Remoto
+🚀 Funcionalidades Principais
+✅ Cadastro de dispositivos contendo:
 
-#### API no Servidor
+Modelo
 
-A API que alimenta a aplicação no servidor conta com os seguintes recursos:
+Fabricante
 
-- Busca:
-  - Todos
-  - Por ID
+Defeitos
 
-- Delete por ID
+Antigos usuários
 
-- Envio de arquivo bruto em massa no formato ".CSV" contendo as informações:
-  - Modelo
-  - Fabricante
-  - Defeitos
-  - Antigos usuários
-  - Potência e resumo de medições do sinal óptico do aparelho
-  - Status de Acesso Remoto
+Potência e resumo de medições do sinal óptico
 
----
+Status de acesso remoto
 
-### English
+✅ Busca Avançada:
 
-So far, this project uses only ReactJS without third-party libraries.
+Pesquisa por qualquer um dos campos acima
 
-#### Internet Device Control Project
+Filtros combinados
 
-**Features:**
-- Save device Macs with:
-  - Model
-  - Manufacturer
-  - Defects
-  - Previous users
-  - Power and summary of Optical Signal measurements of the device
-  - Remote Access Status
+Resultados instantâneos
 
-- Advanced Search by:
-  - Model
-  - Manufacturer
-  - Defects
-  - Previous users
-  - Power and summary of Optical Signal measurements of the device
-  - Remote Access Status
+🖥️ API no Servidor
 
-#### Server-side API
+A API (somente parcialmente pública) oferece:
 
-The API that feeds the application on the server has the following features:
+✅ Consulta de todos os registros
 
-- Search:
-  - All
-  - By ID
+✅ Consulta por ID
 
-- Delete by ID
+✅ Exclusão por ID
 
-- Bulk upload of raw file in ".CSV" format containing information such as:
-  - Model
-  - Manufacturer
-  - Defects
-  - Previous users
-  - Power and summary of Optical Signal measurements of the device
-  - Remote Access Status
+✅ Upload em massa de arquivos .CSV contendo todos os atributos dos dispositivos
+
+A versão final da API recebeu melhorias de desempenho, autenticação, logs de auditoria e rotinas de importação avançada, porém permanece privada devido à sua integração com sistemas internos.
+
+🇺🇸 English
+📌 About the Project
+
+WebMacRegister started as a pure ReactJS application built to organize and monitor network devices.
+
+After being completed, the system evolved into a corporate internal tool, integrated into the operational workflow of a company where I worked.
+For this reason, the final production version is private.
+
+The public version showcases only the early-stage implementation.
+
+🚀 Main Features
+✅ Device registration including:
+
+Model
+
+Manufacturer
+
+Defects
+
+Previous users
+
+Optical signal power and measurement summary
+
+Remote access status
+
+✅ Advanced Search:
+
+Combined filters
+
+Fast and accurate results
+
+Query across all stored fields
+
+🖥️ Server-side API
+
+Features available in the public reference:
+
+✅ Fetch all devices
+
+✅ Fetch by ID
+
+✅ Delete by ID
+
+✅ Bulk .CSV upload containing full device information
+
+The private version of the API includes security enhancements, performance improvements, auditing, and optimized bulk processing, used internally by the company.
